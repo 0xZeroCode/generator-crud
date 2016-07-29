@@ -3,6 +3,7 @@ var Base = require('yeoman-generator').Base;
 var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
+var beautify = require('gulp-beautify');
 
 class CrudMainGenerator extends Base {
   prompting() {
@@ -35,6 +36,8 @@ class CrudMainGenerator extends Base {
   }
 
   writing() {
+    this.registerTransformStream(beautify({indentSize: 2}));
+
     this.npmInstall([
       'mongoose',
       'elasticsearch',
@@ -45,11 +48,15 @@ class CrudMainGenerator extends Base {
       'body-parser'
     ], {'save': true});
 
-
     this.fs.copyTpl(
       this.templatePath('project'),
       this.destinationRoot(),
       {name: this.props.name, license: this.props.license}
+    );
+
+    this.fs.copy(
+      this.templatePath('project/.gitignore'),
+      this.destinationPath('.gitignore')
     );
   }
 
