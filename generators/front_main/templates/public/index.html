@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="<%= appName %>">
+<head>
+  <meta charset="UTF-8">
+  <title><%= appName %></title>
+
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+
+</head>
+<body>
+
+<div ng-cloak>
+  <md-content>
+
+    <md-toolbar <!--ng-controller="login_controller"-->>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+
+          <md-icon md-font-icon="material-icons">reorder</md-icon>
+
+        </md-button>
+        <h2>
+          <span><%= appUpperName %></span>
+        </h2>
+        <span flex></span>
+
+        <div layout="row">
+          <md-button class="md-icon-button" aria-label="More" <!--ng-click="logout()"-->>
+
+            <md-icon md-font-icon="material-icons">exit_to_app</md-icon>
+
+          </md-button>
+        </div>
+      </div>
+    </md-toolbar>
+
+  </md-content>
+
+</div>
+
+<div layout="column" style="height:91%;" ng-cloak>
+  <section layout="row" flex>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop
+                md-whiteframe="4">
+
+      <md-content layout-padding>
+        <md-button class="md-primary" hide-gt-md ng-click="closeSideBar()">
+          close
+        </md-button>
+        <div>
+
+          <!--<md-button md-menu-origin ng-href="#/organization" class="md-raised general-sidebar-menu-item">
+            ორგანიზაცია
+          </md-button>
+
+          <md-button md-menu-origin ng-href="#/voucher" class="md-raised general-sidebar-menu-item">
+            ვაუჩერი
+          </md-button>
+
+          <md-button md-menu-origin class="md-raised general-sidebar-menu-item">სტატისტიკა</md-button>-->
+
+        </div>
+      </md-content>
+    </md-sidenav>
+    <md-content flex layout-padding>
+      <div ng-view></div>
+    </md-content>
+
+  </section>
+</div>
+
+<div style="border:solid#039BE5;position: absolute;width: 99%;background-color: #039BE5;color: white;border-radius: 5px"
+     layout-align="space-between" layout="row">
+  <label>Each Second There Is Someone Out There Waiting For Your Action. Ssso move your ... please :)
+  </label>
+  <label>Powered by Lizard.Inc</label>
+
+</div>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script src="bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -38,6 +38,8 @@ class CrudMainGenerator extends Base {
     return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
       this.props = props;
+
+      this.composeWith('crud:front_main', {options: props});
     }.bind(this));
   }
 
