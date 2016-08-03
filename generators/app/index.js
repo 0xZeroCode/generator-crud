@@ -5,6 +5,7 @@ var yosay = require('yosay');
 var path = require('path');
 var beautify = require('gulp-beautify');
 var gulpIf = require('gulp-if');
+var _ = require('lodash');
 
 function fileCondition(file) {
   return file.relative !== '.gitignore'
@@ -56,7 +57,7 @@ class CrudMainGenerator extends Base {
     this.fs.copyTpl(
       this.templatePath('project'),
       this.destinationRoot(),
-      {name: this.props.name, license: this.props.license}
+      {name: this.props.name, license: this.props.license, dbName: _.camelCase(this.props.name) + 'Db'}
     );
 
     this.fs.copy(
