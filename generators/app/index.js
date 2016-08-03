@@ -4,6 +4,11 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var path = require('path');
 var beautify = require('gulp-beautify');
+var gulpIf = require('gulp-if');
+
+function fileCondition(file) {
+  return file.relative !== '.gitignore'
+}
 
 class CrudMainGenerator extends Base {
   prompting() {
@@ -36,7 +41,7 @@ class CrudMainGenerator extends Base {
   }
 
   writing() {
-    this.registerTransformStream(beautify({indentSize: 2}));
+    this.registerTransformStream(gulpIf(fileCondition, beautify({indentSize: 2})));
 
     this.npmInstall([
       'mongoose',
@@ -55,9 +60,11 @@ class CrudMainGenerator extends Base {
     );
 
     this.fs.copy(
-      this.templatePath('project/.gitignore'),
+      this.templatePath('project/gitignore'),
       this.destinationPath('.gitignore')
     );
+
+    this.fs.delete(this.destinationPath('gitignore'));
   }
 
   install() {
