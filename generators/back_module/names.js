@@ -16,12 +16,17 @@ function toModelLowerName(name) {
   return _.camelCase(name);
 }
 
+function toRepositoryName(name) {
+  return _.camelCase(name) + 's' + 'Repository';
+}
+
 
 module.exports = {
   toRouteName: toRouteName,
   toManagerName: toManagerName,
   toModelName: toModelName,
-  toModelLowerName: toModelLowerName
+  toModelLowerName: toModelLowerName,
+  toRepositoryName: toRepositoryName
 };
 
 

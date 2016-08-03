@@ -70,9 +70,26 @@ function createMongoModelFile(generator) {
   );
 }
 
+function createElasticManagerFile(generator) {
+  var managerFileName = names.toManagerName(generator.moduleName) + generator.extension;
+
+  var managerTemplateVariables = {
+    modelName: names.toModelName(generator.moduleName),
+    modelLowerName: names.toModelLowerName(generator.moduleName),
+    repositoryName: names.toRepositoryName(generator.moduleName)
+  };
+
+  generator.fs.copyTpl(
+    generator.templatePath('elasticManager.js'),
+    generator.destinationPath('src/application/' + managerFileName),
+    managerTemplateVariables
+  );
+}
+
 module.exports = {
   createRouteFile: createRouteFile,
   createMongoManagerFile: createMongoManagerFile,
   createMongoModelFile: createMongoModelFile,
-  writeRoutesUseInApp: writeRoutesUseInApp
+  writeRoutesUseInApp: writeRoutesUseInApp,
+  createElasticManagerFile: createElasticManagerFile
 };

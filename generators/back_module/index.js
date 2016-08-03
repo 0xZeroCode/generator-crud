@@ -31,9 +31,16 @@ class CrudBackModuleGenerator extends Base {
 
     moduleBuilder.writeRoutesUseInApp(this);
 
-    moduleBuilder.createMongoManagerFile(this);
+    if (this.options.elastic) {
+      moduleBuilder.createElasticManagerFile(this);
 
-    moduleBuilder.createMongoModelFile(this);
+      //create repo
+    }
+    else {
+      moduleBuilder.createMongoManagerFile(this);
+
+      moduleBuilder.createMongoModelFile(this);
+    }
   }
 
   install() {
