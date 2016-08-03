@@ -26,8 +26,12 @@ e.g.
 ```bash
 yo crud:back_module organization
 ```
-
 it will create organizations.js route file in routes directory, organizationsManager.js in application directory and organization.js mongoose model file in models directory. and will register router in app.js .
+
+you can generate elasticsearch based module:
+```bash
+yo crud:back_module organization --elastic
+```
 
 ## Getting To Know Yeoman
 
