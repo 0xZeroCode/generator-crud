@@ -22,7 +22,7 @@ then generate backend module:
 yo crud:back_module module-name
 ```
 
-e.g 
+e.g.
 ```bash
 yo crud:back_module organization
 ```
