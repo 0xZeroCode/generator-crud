@@ -16,6 +16,31 @@ function createRouteFile(generator) {
   );
 }
 
+function writeRoutesUseInApp(generator) {
+  var routeName = names.toRouteName(generator.moduleName);
+  var appDeclareString = 'var app = express();';
+
+  var routeDeclareBeforeApp =
+    `var ${routeName} = require('./routes/${routeName}');
+    
+${appDeclareString}`;
+
+  var contents = generator.fs.read(generator.destinationPath('src/app.js'));
+
+  contents = contents.replace(appDeclareString, routeDeclareBeforeApp);
+
+  var appHtmlGet = 'app.get\(\'\*';
+
+  var appUseRouter =
+    `app.use(${routeName}.baseUrl, ${routeName}.router);
+
+${appHtmlGet}`;
+
+  contents = contents.replace(appHtmlGet, appUseRouter);
+
+  generator.fs.write(generator.destinationPath('src/app.js'), contents);
+}
+
 function createMongoManagerFile(generator) {
   var managerFileName = names.toManagerName(generator.moduleName) + generator.extension;
 
@@ -48,5 +73,6 @@ function createMongoModelFile(generator) {
 module.exports = {
   createRouteFile: createRouteFile,
   createMongoManagerFile: createMongoManagerFile,
-  createMongoModelFile: createMongoModelFile
+  createMongoModelFile: createMongoModelFile,
+  writeRoutesUseInApp: writeRoutesUseInApp
 };

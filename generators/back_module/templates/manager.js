@@ -29,10 +29,15 @@ function delete<%= modelName %>(id) {
   return <%= modelName %>.findByIdAndRemove(id).exec();
 }
 
+function fullTextSearch(searchString) {
+
+}
+
 module.exports = {
   create<%= modelName %>: create<%= modelName %>,
   get<%= modelName %>s: get<%= modelName %>s,
   get<%= modelName %>ById: get<%= modelName %>ById,
   update<%= modelName %>: update<%= modelName %>,
-  delete<%= modelName %>: delete<%= modelName %>
+  delete<%= modelName %>: delete<%= modelName %>,
+  fullTextSearch: fullTextSearch
 };
