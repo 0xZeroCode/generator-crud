@@ -22,7 +22,7 @@ function update<%= modelName %>(id, body) {
 }
 
 function delete<%= modelName %>(id) {
-  return repository.delete(id);
+  return repository.deleteById(id);
 }
 
 function fullTextSearch(searchString) {

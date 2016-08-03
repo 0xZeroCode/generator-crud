@@ -86,10 +86,26 @@ function createElasticManagerFile(generator) {
   );
 }
 
+function createElasticRepositoryFile(generator) {
+  var repositoryFileName = names.toRepositoryName(generator.moduleName) + generator.extension;
+
+  var repoTemplateVariables = {
+    modelName: names.toModelName(generator.moduleName),
+    modelLowerName: names.toModelLowerName(generator.moduleName)
+  };
+
+  generator.fs.copyTpl(
+    generator.templatePath('elasticRepository.js'),
+    generator.destinationPath('src/infrastructure/' + repositoryFileName),
+    repoTemplateVariables
+  );
+}
+
 module.exports = {
   createRouteFile: createRouteFile,
   createMongoManagerFile: createMongoManagerFile,
   createMongoModelFile: createMongoModelFile,
   writeRoutesUseInApp: writeRoutesUseInApp,
-  createElasticManagerFile: createElasticManagerFile
+  createElasticManagerFile: createElasticManagerFile,
+  createElasticRepositoryFile: createElasticRepositoryFile
 };

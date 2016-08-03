@@ -34,7 +34,7 @@ class CrudBackModuleGenerator extends Base {
     if (this.options.elastic) {
       moduleBuilder.createElasticManagerFile(this);
 
-      //create repo
+      moduleBuilder.createElasticRepositoryFile(this);
     }
     else {
       moduleBuilder.createMongoManagerFile(this);
