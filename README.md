@@ -16,6 +16,19 @@ Then generate your new project:
 yo crud
 ```
 
+then generate backend module:
+
+```bash
+yo crud:back_module module-name
+```
+
+e.g 
+```bash
+yo crud:back_module organization
+```
+
+it will create organizations.js route file in routes directory, organizationsManager.js in application directory and organization.js mongoose model file in models directory. and will register router in app.js .
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
