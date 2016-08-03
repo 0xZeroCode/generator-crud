@@ -1,8 +1,20 @@
 var Base = require('yeoman-generator').Base;
 var beautify = require('gulp-beautify');
+var names = require('./names');
+var moduleBuilder = require('./moduleBuilder');
 
 
 class CrudBackModuleGenerator extends Base {
+  constructor(args, options) {
+    super(args, options);
+
+    this.argument('moduleName', {type: String, required: true});
+
+    this.option('elastic');
+
+    this.extension = '.js';
+  }
+
   prompting() {
     var prompts = [];
 
@@ -15,7 +27,9 @@ class CrudBackModuleGenerator extends Base {
   writing() {
     this.registerTransformStream(beautify({indentSize: 2}));
 
+    moduleBuilder.createRouteFile(this);
 
+    moduleBuilder.createMongoManagerFile(this);
   }
 
   install() {

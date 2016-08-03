@@ -19,6 +19,7 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "gulp-beautify": "^2.0.0",
+    "lodash": "^4.14.1",
     "yeoman-generator": "^0.24.1",
     "yosay": "^1.0.0"
   },
