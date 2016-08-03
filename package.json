@@ -1,6 +1,6 @@
 {
   "name": "generator-crud",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "generates crud modules of mean stack or elasticsearch instead of mongodb",
   "homepage": "",
   "author": "Irakli Jishkariani <irakli2692@gmail.com>",
