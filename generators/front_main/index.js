@@ -42,8 +42,6 @@ class FrontMainGenerator extends Base {
   }
 
   writing() {
-    // this.registerTransformStream(beautify({indentSize: 2}));
-
     this.bowerInstall([
       'angular',
       'angular-material',

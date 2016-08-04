@@ -8,7 +8,9 @@ var gulpIf = require('gulp-if');
 var _ = require('lodash');
 
 function fileCondition(file) {
-  return file.relative !== '.gitignore'
+  var extension = file.relative.split('.')[1];
+
+  return file.relative !== '.gitignore' && extension !== 'html';
 }
 
 class CrudMainGenerator extends Base {
