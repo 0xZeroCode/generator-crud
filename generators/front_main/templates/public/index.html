@@ -13,7 +13,7 @@
 <div ng-cloak>
   <md-content>
 
-    <md-toolbar <!--ng-controller="login_controller"-->>
+    <md-toolbar>
       <div class="md-toolbar-tools">
         <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
 
@@ -26,7 +26,7 @@
         <span flex></span>
 
         <div layout="row">
-          <md-button class="md-icon-button" aria-label="More" <!--ng-click="logout()"-->>
+          <md-button class="md-icon-button" aria-label="More">
 
             <md-icon md-font-icon="material-icons">exit_to_app</md-icon>
 
@@ -49,16 +49,6 @@
           close
         </md-button>
         <div>
-
-          <!--<md-button md-menu-origin ng-href="#/organization" class="md-raised general-sidebar-menu-item">
-            ორგანიზაცია
-          </md-button>
-
-          <md-button md-menu-origin ng-href="#/voucher" class="md-raised general-sidebar-menu-item">
-            ვაუჩერი
-          </md-button>
-
-          <md-button md-menu-origin class="md-raised general-sidebar-menu-item">სტატისტიკა</md-button>-->
 
         </div>
       </md-content>
@@ -87,6 +77,7 @@
 <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
 <script src="bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
 
+<script src="util/utils.js"></script>
 <script src="app.js"></script>
 
 </body>
