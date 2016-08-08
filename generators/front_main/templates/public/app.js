@@ -9,7 +9,7 @@ var app = angular.module('<%= appName %>', [
     .config(['$routeProvider', '$mdThemingProvider', function ($routeProvider, $mdThemingProvider) {
 
       $routeProvider.otherwise({
-        redirectTo: '/login'
+        redirectTo: '/'
       });
 
 

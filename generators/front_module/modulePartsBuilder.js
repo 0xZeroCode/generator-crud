@@ -1,25 +1,10 @@
 var names = require('./names');
 
-var htmlFile = 'src/public/index.html';
-
-function getAppName(generator) {
-  var appRegexp = /ng-app[ ]*=[ ]*"(.+?)"/mi; //regular expression
-
-
-  var contents = generator.fs.read(generator.destinationPath(htmlFile));
-
-  var result = appRegexp.exec(contents);
-
-  return result[1]; //app name. string in (.+?)
-}
-
 function createModuleJsFile(generator) {
   var fileName = names.toModuleFileName(generator.moduleName) + '.js';
 
-  var applicationName = getAppName(generator);
-
   var moduleTemplateVariables = {
-    appName: applicationName,
+    appName: generator.appName,
     moduleName: generator.moduleName,
     controllerName: names.toControllerName(generator.moduleName),
     factoryName: names.toFactoryName(generator.moduleName),

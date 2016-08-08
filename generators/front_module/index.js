@@ -4,18 +4,17 @@ var gulpIf = require('gulp-if');
 
 var builder = require('./modulePartsBuilder');
 var indexHtmlEditor = require('./indexHtmlEditor');
+var appJsEditor = require('./appJsEditor');
+var utils = require('./utils');
 
-function fileCondition(file) {
-  var extension = file.relative.split('.')[1];
-
-  return file.relative !== '.gitignore' && extension !== 'html';
-} //TODO: fix copy/paste
 
 class CrudFrontModuleGenerator extends Base {
   constructor(args, options) {
     super(args, options);
 
     this.argument('moduleName', {type: String, required: true});
+
+    this.appName = utils.getAppName(this);
   }
 
   prompting() {
@@ -28,7 +27,7 @@ class CrudFrontModuleGenerator extends Base {
   }
 
   writing() {
-    this.registerTransformStream(gulpIf(fileCondition, beautify({indentSize: 2})));
+    this.registerTransformStream(gulpIf(utils.fileCondition, beautify({indentSize: 2})));
 
     builder.createModuleJsFile(this);
 
@@ -37,6 +36,8 @@ class CrudFrontModuleGenerator extends Base {
     indexHtmlEditor.addJsScriptDeclarationInHtml(this);
 
     indexHtmlEditor.addSidenavButton(this);
+
+    appJsEditor.addModuleInDependencies(this);
   }
 
   install() {
