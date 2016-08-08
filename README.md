@@ -16,7 +16,32 @@ Then generate your new project:
 yo crud
 ```
 
-then generate backend module:
+then generate mean stack module:
+```bash
+yo crud:module module-name
+```
+
+if you want elasticsearch instead of mongodb:
+```bash
+yo crud:module module-name --elastic
+```
+
+e.g.
+```bash
+yo crud:module user
+yo crud:module person --elastic
+```
+
+```bash
+yo crud:module module-name
+```
+actually runs two commands:
+```bash
+yo crud:back_module module-name
+yo crud:front_module module-name
+```
+
+if you want to generate only backend module:
 
 ```bash
 yo crud:back_module module-name
@@ -32,6 +57,12 @@ you can generate elasticsearch based module:
 ```bash
 yo crud:back_module organization --elastic
 ```
+
+if you want to generate only front module:
+```bash
+yo crud:front_module module-name
+```
+creates angular application with controller and factory, adds dependency to main application, adds script to index.html, creates view.
 
 ## Getting To Know Yeoman
 
