@@ -59,17 +59,28 @@ class CrudMainGenerator extends Base {
     ], {'save': true});
 
     this.fs.copyTpl(
-      this.templatePath('project'),
-      this.destinationRoot(),
-      {name: this.props.name, license: this.props.license, dbName: _.camelCase(this.props.name) + 'Db'}
+      this.templatePath('project/config'),
+      this.destinationPath('config'),
+      {dbName: _.camelCase(this.props.name) + 'Db'}
     );
+
+    this.fs.copy(
+      this.templatePath('project/src'),
+      this.destinationPath('src')
+    );
+
+    if (!this.fs.exists(this.destinationPath('package.json'))) {
+      this.fs.copyTpl(
+        this.templatePath('project/package.json'),
+        this.destinationPath('package.json'),
+        {name: this.props.name, license: this.props.license}
+      );
+    }
 
     this.fs.copy(
       this.templatePath('project/gitignore'),
       this.destinationPath('.gitignore')
     );
-
-    this.fs.delete(this.destinationPath('gitignore'));
   }
 
   install() {

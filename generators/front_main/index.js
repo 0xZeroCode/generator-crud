@@ -15,7 +15,7 @@ class FrontMainGenerator extends Base {
   prompting() {
     var prompts = [];
 
-    if (!this.projectName && !this.fs.exists(this.destinationPath('package.json'))) {
+    if (!this.projectName && !this.fs.exists(this.destinationPath('bower.json'))) {
       prompts.push({
         type: 'input',
         name: 'name',
@@ -59,11 +59,13 @@ class FrontMainGenerator extends Base {
       this.destinationPath('.bowerrc')
     );
 
-    this.fs.copyTpl(
-      this.templatePath('bower.json'),
-      this.destinationPath('bower.json'),
-      {name: this.projectName, license: this.license}
-    );
+    if (!this.fs.exists(this.destinationPath('bower.json'))) {
+      this.fs.copyTpl(
+        this.templatePath('bower.json'),
+        this.destinationPath('bower.json'),
+        {name: this.projectName, license: this.license}
+      );
+    }
 
     this.fs.copyTpl(
       this.templatePath('public'),
