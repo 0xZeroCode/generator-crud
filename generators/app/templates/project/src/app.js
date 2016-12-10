@@ -19,10 +19,15 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 mongoose.connect(config.get('mongoDatabase'));
 
 
-app.get('*', function (req, res) {
+app.get('*', function(req, res) {
   res.sendfile('index.html');
 });
 
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+
+  res.status(500).send();
+});
 
 app.set('port', config.get('port'));
 
@@ -30,10 +35,10 @@ var server = http.createServer(app);
 
 server.listen(config.get('port'));
 
-server.on('error', function (error) {
+server.on('error', function(error) {
   console.error(error);
 });
 
-server.on('listening', function () {
+server.on('listening', function() {
   console.log('listening');
 });
