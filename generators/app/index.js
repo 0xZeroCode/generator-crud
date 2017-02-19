@@ -37,50 +37,23 @@ class CrudMainGenerator extends Base {
       });
     }
 
-    return this.prompt(prompts).then(function (props) {
+    return this.prompt(prompts).then(function(props) {
       // To access props later use this.props.someAnswer;
       this.props = props;
 
-      this.composeWith('crud:front_main', {options: props});
+      this.composeWith('crud:back_main', {
+        options: props
+      });
+      this.composeWith('crud:front_main', {
+        options: props
+      });
     }.bind(this));
   }
 
   writing() {
-    this.registerTransformStream(gulpIf(fileCondition, beautify({indentSize: 2})));
-
-    this.npmInstall([
-      'mongoose',
-      'elasticsearch',
-      'bluebird',
-      'config',
-      'js-yaml',
-      'express',
-      'body-parser'
-    ], {'save': true});
-
-    this.fs.copyTpl(
-      this.templatePath('project/config'),
-      this.destinationPath('config'),
-      {dbName: _.camelCase(this.props.name) + 'Db'}
-    );
-
-    this.fs.copy(
-      this.templatePath('project/src'),
-      this.destinationPath('src')
-    );
-
-    if (!this.fs.exists(this.destinationPath('package.json'))) {
-      this.fs.copyTpl(
-        this.templatePath('project/package.json'),
-        this.destinationPath('package.json'),
-        {name: this.props.name, license: this.props.license}
-      );
-    }
-
-    this.fs.copy(
-      this.templatePath('project/gitignore'),
-      this.destinationPath('.gitignore')
-    );
+    this.registerTransformStream(gulpIf(fileCondition, beautify({
+      indentSize: 2
+    })));
   }
 
   install() {
