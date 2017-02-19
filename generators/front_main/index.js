@@ -69,7 +69,7 @@ class FrontMainGenerator extends Base {
 
     this.fs.copyTpl(
       this.templatePath('public'),
-      this.destinationPath('src/public'),
+      this.destinationPath('public'),
       {appName: _.camelCase(this.projectName), appUpperName: _.upperFirst(_.camelCase(this.projectName))}
     );
   }
