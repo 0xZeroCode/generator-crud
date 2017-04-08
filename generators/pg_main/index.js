@@ -2,6 +2,7 @@ var Base = require('yeoman-generator').Base;
 var beautify = require('gulp-beautify');
 var gulpIf = require('gulp-if');
 var utils = require('../utils');
+const dbConfig = require('./dbConfig');
 
 class PgMainGenerator extends Base {
   prompting() {
@@ -24,6 +25,18 @@ class PgMainGenerator extends Base {
     ], {
       save: true
     });
+
+    let files = ['db.js', 'recordStructure.js', 'repository.js'];
+
+    files.forEach(function(file) {
+      this.fs.copy(
+        this.templatePath(file),
+        this.destinationPath('infrastructure/' + file)
+      );
+    }.bind(this));
+
+    dbConfig.writeDbParamsToConfig(this);
+
   }
 
   install() {

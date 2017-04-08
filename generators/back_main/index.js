@@ -29,7 +29,8 @@ class BackMainGenerator extends Base {
       'config',
       'js-yaml',
       'express',
-      'body-parser'
+      'body-parser',
+      'lodash'
     ], {
       'save': true
     });
