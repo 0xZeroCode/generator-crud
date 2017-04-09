@@ -2,12 +2,27 @@ var Base = require('yeoman-generator').Base;
 var beautify = require('gulp-beautify');
 var gulpIf = require('gulp-if');
 var utils = require('../utils');
+const _ = require('lodash');
 
 class BackMainGenerator extends Base {
   constructor(args, options) {
     super(args, options);
 
+    this.option('mongodb');
+    this.option('elastic');
+
     this.props = options;
+
+    const params = Object.assign({}, this.props, this.options);
+
+    if (this.options.mongodb) {
+      this.composeWith('crud:mongo_main', {options: params});
+    } else if (this.options.elastic) {
+      this.composeWith('crud:elastic_main', {options: params})
+    } else {
+      this.composeWith('crud:pg_main', {options: params});
+    }
+
   }
 
   prompting() {

@@ -41,11 +41,13 @@ class CrudMainGenerator extends Base {
       // To access props later use this.props.someAnswer;
       this.props = props;
 
+      const params = Object.assign({}, props, this.options);
+
       this.composeWith('crud:back_main', {
-        options: props
+        options: params
       });
       this.composeWith('crud:front_main', {
-        options: props
+        options: params
       });
     }.bind(this));
   }
