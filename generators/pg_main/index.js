@@ -31,7 +31,7 @@ class PgMainGenerator extends Base {
     files.forEach(function(file) {
       this.fs.copy(
         this.templatePath(file),
-        this.destinationPath('infrastructure/' + file)
+        this.destinationPath('src/infrastructure/' + file)
       );
     }.bind(this));
 
