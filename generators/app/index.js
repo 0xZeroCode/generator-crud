@@ -6,6 +6,7 @@ var path = require('path');
 var beautify = require('gulp-beautify');
 var gulpIf = require('gulp-if');
 var _ = require('lodash');
+const utils = require('../utils');
 
 function fileCondition(file) {
   var extension = file.relative.split('.')[1];
@@ -22,19 +23,7 @@ class CrudMainGenerator extends Base {
     var prompts = [];
 
     if (!this.fs.exists(this.destinationPath('package.json'))) {
-      prompts.push({
-        type: 'input',
-        name: 'name',
-        message: 'project name',
-        default: path.basename(this.destinationRoot())
-      });
-
-      prompts.push({
-        type: 'input',
-        name: 'license',
-        message: 'license',
-        default: 'MIT'
-      });
+      prompts = utils.projectPrompts(this);
     }
 
     return this.prompt(prompts).then(function(props) {

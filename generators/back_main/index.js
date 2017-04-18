@@ -18,7 +18,7 @@ class BackMainGenerator extends Base {
     if (this.options.mongodb) {
       this.composeWith('crud:mongo_main', {options: params});
     } else if (this.options.elastic) {
-      this.composeWith('crud:elastic_main', {options: params})
+      this.composeWith('crud:elastic_main', {options: params});
     } else {
       this.composeWith('crud:pg_main', {options: params});
     }
@@ -28,9 +28,28 @@ class BackMainGenerator extends Base {
   prompting() {
     var prompts = [];
 
+    if (!this.projectName && !this.fs.exists(this.destinationPath('bower.json'))) {
+      prompts = prompts.concat(utils.projectPrompts(this));
+    }
+
     return this.prompt(prompts).then(function(props) {
       // To access props later use this.props.someAnswer;
-      this.props = props;
+      if (props.name) this.projectName = props.name;
+
+      if (props.license) this.license = props.license;
+
+      Object.assign(this.props, props);
+
+      const params = Object.assign({}, this.props, this.options);
+
+      if (this.options.mongodb) {
+        this.composeWith('crud:mongo_main', {options: params});
+      } else if (this.options.elastic) {
+        this.composeWith('crud:elastic_main', {options: params});
+      } else {
+        this.composeWith('crud:pg_main', {options: params});
+      }
+
     }.bind(this));
   }
 
