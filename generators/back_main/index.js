@@ -13,22 +13,12 @@ class BackMainGenerator extends Base {
 
     this.props = options;
 
-    const params = Object.assign({}, this.props, this.options);
-
-    if (this.options.mongodb) {
-      this.composeWith('crud:mongo_main', {options: params});
-    } else if (this.options.elastic) {
-      this.composeWith('crud:elastic_main', {options: params});
-    } else {
-      this.composeWith('crud:pg_main', {options: params});
-    }
-
   }
 
   prompting() {
     var prompts = [];
 
-    if (!this.projectName && !this.fs.exists(this.destinationPath('bower.json'))) {
+    if (!this.projectName && !this.fs.exists(this.destinationPath('package.json'))) {
       prompts = prompts.concat(utils.projectPrompts(this));
     }
 
