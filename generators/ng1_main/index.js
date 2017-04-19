@@ -2,6 +2,7 @@ var Base = require('yeoman-generator').Base;
 var beautify = require('gulp-beautify');
 var gulpIf = require('gulp-if');
 var utils = require('../utils');
+const _ = require('lodash');
 
 class AngularOneMainGenerator extends Base {
   prompting() {

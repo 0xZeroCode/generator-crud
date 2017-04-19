@@ -8,6 +8,9 @@ class BackMainGenerator extends Base {
   constructor(args, options) {
     super(args, options);
 
+    this.projectName = options.name;
+    this.license = options.license;
+
     this.option('mongodb');
     this.option('elastic');
 
