@@ -36,12 +36,21 @@ class BackMainGenerator extends Base {
       const params = Object.assign({}, this.props, this.options);
 
       if (this.options.mongodb) {
-        this.composeWith('crud:mongo_main', {options: params});
-      } else if (this.options.elastic) {
-        this.composeWith('crud:elastic_main', {options: params});
-      } else {
-        this.composeWith('crud:pg_main', {options: params});
+        this.composeWith('crud:mongo_main', {
+          options: params
+        });
       }
+
+      if (this.options.elastic) {
+        this.composeWith('crud:elastic_main', {
+          options: params
+        });
+      }
+
+      this.composeWith('crud:pg_main', {
+        options: params
+      });
+
 
     }.bind(this));
   }
