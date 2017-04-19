@@ -5,6 +5,15 @@ var utils = require('../utils');
 const _ = require('lodash');
 
 class AngularOneMainGenerator extends Base {
+  constructor(args, options) {
+    super(args, options);
+
+    this.projectName = options.name;
+    this.license = options.license;
+
+    this.props = options;
+  }
+
   prompting() {
     var prompts = [];
 
