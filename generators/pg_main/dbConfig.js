@@ -15,7 +15,7 @@ function getParamsString(dbName) {
   let dbParams =
     `db:
       host: 'localhost'
-      port: 5432
+      port: '5432'
       database: '${dbName}'
       user: 'postgres'
       password: '123456789'`;
