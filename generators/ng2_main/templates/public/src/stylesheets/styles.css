@@ -70,30 +70,6 @@
   display: inline-block;
 }
 
-.um {
-  background-color: steelblue;
-  width: 500px;
-  margin: 200px auto auto auto;
-  padding: 80px;
-  padding-top: auto;
-  padding-bottom: auto;
-  color: #fff;
-}
-
-.um .btn {
-  background-color: #cfe1e2 !important;
-  border-radius: 7%;
-  color: black;
-}
-
-.um .btn-link {
-  color: #fff;
-}
-
-.um .btn-link:hover {
-  color: #ccc;
-}
-
 .progressLoader {
   border: 7px solid #f3f3f3;
   /* Light grey */

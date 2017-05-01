@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 import { Router } from '@angular/router';
 
 
-import { tokenName, authHeaderName, promiseResult, getHeaders } from './utils';
+import { promiseResult, getHeaders } from './utils';
 
 @Injectable()
 export class UserService {

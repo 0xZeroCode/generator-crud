@@ -20,8 +20,8 @@
       "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
       "../node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css",
       "../node_modules/font-awesome/css/font-awesome.min.css",
-      "styles.css",
-      "toast.css"
+      "stylesheets/styles.css",
+      "stylesheets/toast.css"
     ],
     "scripts": [
       "../node_modules/jquery/dist/jquery.min.js",

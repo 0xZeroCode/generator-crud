@@ -8,45 +8,18 @@ import { AlertModule, ButtonsModule, PaginationModule, ModalModule, TypeaheadMod
 import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
 
 import { AppComponent } from './app.component';
-import { PersonsComponent } from './persons/persons.component';
-import { PersonsTableComponent } from './persons/persons-table.component';
-import { LoginComponent } from './user-management/login.component';
-import { DropDownMenuComponent } from './user-management/dropdown-menu.component';
-import { UmComponent } from './user-management/um.component';
-import { PasswordChangeComponent } from './user-management/password-change.component';
 
-import { PersonsService } from './persons/persons.service';
-import { UmService } from './user-management/um.service';
 import { UserService } from './user.service';
 
 import { AuthGuard } from './auth-guard.service';
 
 const routes: Route[] = [
-  {
-    path: '',
-    redirectTo: 'persons',
-    pathMatch: 'full'
-  },
-  {
-    path: 'persons',
-    component: PersonsComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'um',
-    component: UmComponent
-  }
+
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PersonsComponent,
-    PersonsTableComponent,
-    LoginComponent,
-    UmComponent,
-    DropDownMenuComponent,
-    PasswordChangeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +35,7 @@ const routes: Route[] = [
     ProgressbarModule.forRoot(),
     NKDatetimeModule
   ],
-  providers: [PersonsService, UmService, AuthGuard, UserService],
+  providers: [AuthGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
