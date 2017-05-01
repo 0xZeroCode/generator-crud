@@ -24,6 +24,11 @@
   font-size: 30px;
 }
 
+.borderLeftBox {
+  border-left: solid #607D8B;
+  padding: 10px;
+}
+
 .fab {
   background-color: rgb(255, 82, 82);
   color: rgb(255, 255, 255);
@@ -91,5 +96,169 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.borderLeftBox {
+  border-left: solid #607D8B;
+  padding: 10px;
+}
+
+.scroller {
+  height: 65vh;
+  /* 1 unit is 'viewport height'/100 */
+  overflow-y: scroll;
+}
+
+.card-footer .round-button {
+  margin: 4px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12);
+  box-sizing: border-box;
+  -webkit-box-flex: 1;
+  background-color: white;
+}
+
+.card .card-header {
+  display: flex;
+  padding: 24px 16px 16px;
+  flex: 1 1 auto;
+  flex-direction: row;
+}
+
+.card .card-header .card-title {
+  flex: 1;
+  display: flex;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.card .card-block {
+  display: block;
+  padding: 16px;
+  padding-top: 0;
+}
+
+.card-footer {
+  margin: 8px;
+}
+
+.sidenavButton {
+  margin: 0 6px;
+  margin-left: -8px;
+  padding: 8px;
+  -webkit-transition-duration: .5s;
+  transition-duration: .5s;
+  -webkit-transition-timing-function: cubic-bezier(.35, 0, .25, 1);
+  transition-timing-function: cubic-bezier(.35, 0, .25, 1);
+  -webkit-transition-property: background-color, fill, color;
+  transition-property: background-color, fill, color;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  min-height: 36px;
+  vertical-align: middle;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: inherit;
+  font-variant: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), background-color .4s cubic-bezier(.25, .8, .25, 1);
+  transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), background-color .4s cubic-bezier(.25, .8, .25, 1);
+  height: 40px;
+  min-width: 0;
+  line-height: 24px;
+  padding: 8px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.sidenav {
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: 64px;
+  left: 0;
+  background-color: white;
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidenav */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+}
+
+
+/* The navigation menu links */
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: rgb(8, 7, 18);
+  display: block;
+  transition: 0.3s;
+}
+
+
+/* When you mouse over the navigation links, change their color */
+
+.sidenav a:hover, .offcanvas a:focus {
+  color: #818181;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+  align-items: center;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
   }
 }
