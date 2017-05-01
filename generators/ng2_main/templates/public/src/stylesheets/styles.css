@@ -24,11 +24,6 @@
   font-size: 30px;
 }
 
-.borderLeftBox {
-  border-left: solid #607D8B;
-  padding: 10px;
-}
-
 .fab {
   background-color: rgb(255, 82, 82);
   color: rgb(255, 255, 255);
@@ -100,7 +95,7 @@
 }
 
 .borderLeftBox {
-  border-left: solid #607D8B;
+  border-left: solid steelblue;
   padding: 10px;
 }
 
