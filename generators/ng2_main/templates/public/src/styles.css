@@ -1,0 +1,119 @@
+/* You can add global styles to this file, and also import other style files */
+
+.flex {
+  flex: 1;
+}
+
+.rowDirection {
+  display: flex;
+  flex-direction: row;
+}
+
+.roundButton {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  margin: 6px 8px;
+  padding: 0;
+  padding-left: 6px;
+  padding-right: 6px;
+  border: 0;
+}
+
+.bigLabelFont {
+  font-size: 30px;
+}
+
+.fab {
+  background-color: rgb(255, 82, 82);
+  color: rgb(255, 255, 255);
+}
+
+.fab:hover, .fab:focus {
+  background-color: rgb(213, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.toolbar-button {
+  background: transparent;
+  display: inline-block;
+  /*font-size: 100%;*/
+}
+
+.toolbar {
+  background-color: steelblue;
+  color: #fff;
+  flex: 1;
+  font-size: 20px;
+  letter-spacing: .005em;
+  box-sizing: border-box;
+  font-weight: 400;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  height: 64px;
+  max-height: 64px;
+  padding: 0 16px;
+  margin: 0;
+}
+
+.logout-button {
+  background: transparent;
+  display: inline-block;
+}
+
+.um {
+  background-color: steelblue;
+  width: 500px;
+  margin: 200px auto auto auto;
+  padding: 80px;
+  padding-top: auto;
+  padding-bottom: auto;
+  color: #fff;
+}
+
+.um .btn {
+  background-color: #cfe1e2 !important;
+  border-radius: 7%;
+  color: black;
+}
+
+.um .btn-link {
+  color: #fff;
+}
+
+.um .btn-link:hover {
+  color: #ccc;
+}
+
+.progressLoader {
+  border: 7px solid #f3f3f3;
+  /* Light grey */
+  border-top: 7px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  vertical-align: middle;
+  align-self: center;
+  margin: auto;
+  margin-top: 45%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
