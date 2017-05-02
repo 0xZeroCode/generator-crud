@@ -1,0 +1,18 @@
+<div id="routeSidenav" class="sidenav" [style.width]="getSidenavWidth()">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+</div>
+
+<div class="toolbar">
+  <button class="btn-sm round-button sidenavButton" (click)="openNav()">
+    <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+  </button>
+  <!-- <span class="flex"></span> -->
+
+</div>
+
+<div id="main" [style.marginLeft]="getSidenavWidth()">
+  <router-outlet></router-outlet>
+</div>
+
+<div id="snackbar">
+</div>
