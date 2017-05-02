@@ -4,6 +4,12 @@ var gulpIf = require('gulp-if');
 var utils = require('../utils');
 
 class AngularTwoMainGenerator extends Base {
+  constructor(args, options) {
+    super(args, options);
+
+    this.props = options;
+  }
+
   prompting() {
     var prompts = [];
 
