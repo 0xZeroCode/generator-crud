@@ -7,6 +7,13 @@ class AngularTwoMainGenerator extends Base {
   prompting() {
     var prompts = [];
 
+    prompts.push({
+      type: 'input',
+      name: 'prefix',
+      message: 'component name prefix',
+      default: 'app'
+    });
+
     return this.prompt(prompts).then(function(props) {
       // To access props later use this.props.someAnswer;
       this.props = props;
@@ -55,9 +62,9 @@ class AngularTwoMainGenerator extends Base {
     });
 
     var parameters = {
-      name: '',
-      license: '',
-      prefix: ''
+      name: this.props.name,
+      license: this.props.license,
+      prefix: this.props.prefix
     };
   }
 
