@@ -19,7 +19,9 @@ class AngularOneMainGenerator extends Base {
 
     return this.prompt(prompts).then(function(props) {
       // To access props later use this.props.someAnswer;
-      this.props = props;
+
+      Object.assign(this.props, props);
+
     }.bind(this));
   }
 
