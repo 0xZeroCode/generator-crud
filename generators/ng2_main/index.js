@@ -53,6 +53,12 @@ class AngularTwoMainGenerator extends Base {
     ], {
       'save-dev': true
     });
+
+    var parameters = {
+      name: '',
+      license: '',
+      prefix: ''
+    };
   }
 
   install() {

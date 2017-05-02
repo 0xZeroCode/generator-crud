@@ -20,16 +20,5 @@ export class UserService {
     return promiseResult(this.http.get(url, { headers: getHeaders() }), this);
   }
 
-  getServiceUsers() {
-    const url = this.baseUrl + '/serviceusers';
-
-    return promiseResult(this.http.get(url, { headers: getHeaders() }), this);
-  }
-
-  getServiceUsername() {
-    return this.getMetadata()
-      .then(metadata => metadata.serviceUser.username);
-  }
-
 
 }

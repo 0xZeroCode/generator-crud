@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "private-health-insurance-portal-front"
+    "name": "<%= name %>"
   },
   "apps": [{
     "root": "src",
@@ -14,7 +14,7 @@
     "main": "main.ts",
     "polyfills": "polyfills.ts",
     "tsconfig": "tsconfig.app.json",
-    "prefix": "app",
+    "prefix": "<%= prefix %>",
     "styles": [
       "../node_modules/bootstrap/dist/css/bootstrap.min.css",
       "../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",

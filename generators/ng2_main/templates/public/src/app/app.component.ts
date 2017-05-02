@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: '<%= prefix %>-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
