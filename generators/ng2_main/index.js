@@ -49,7 +49,8 @@ class AngularTwoMainGenerator extends Base {
       'rxjs',
       'zone.js'
     ], {
-      'save': true
+      'save': true,
+      'cwd': this.destinationPath('public')
     });
 
     this.npmInstall([
@@ -63,7 +64,8 @@ class AngularTwoMainGenerator extends Base {
       'tslint',
       'typescript'
     ], {
-      'save-dev': true
+      'save-dev': true,
+      'cwd': this.destinationPath('public')
     });
 
     var parameters = {
