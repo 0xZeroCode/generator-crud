@@ -29,9 +29,6 @@ class AngularTwoMainGenerator extends Base {
   }
 
   writing() {
-    this.registerTransformStream(gulpIf(utils.fileCondition, beautify({
-      indentSize: 2
-    })));
 
     this.npmInstall([
       '@angular/common',
@@ -80,6 +77,21 @@ class AngularTwoMainGenerator extends Base {
       this.destinationPath('public'),
       parameters
     );
+
+    var hiddenFiles = [
+      '.gitignore',
+      '.editorconfig',
+      '.angular-cli.json'
+    ];
+
+    hiddenFiles.forEach(function(file) {
+      this.fs.copyTpl(
+        this.templatePath('public/' + file),
+        this.destinationPath('public/' + file),
+        parameters
+      );
+    }.bind(this));
+
   }
 
   install() {
