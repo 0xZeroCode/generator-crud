@@ -42,9 +42,6 @@ class CrudMainGenerator extends Base {
   }
 
   writing() {
-    this.registerTransformStream(gulpIf(fileCondition, beautify({
-      indentSize: 2
-    })));
   }
 
   install() {

@@ -3,7 +3,7 @@ const path = require('path');
 function fileCondition(file) {
   var extension = file.relative.split('.')[1];
 
-  return file.relative !== '.gitignore' && extension !== 'html';
+  return file.relative !== '.gitignore' && extension !== 'html' && extension !== 'yaml';
 }
 
 function projectPrompts(generator) {
