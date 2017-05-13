@@ -16,8 +16,6 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
-mongoose.connect(config.get('mongoDatabase'));
-
 
 app.get('*', function(req, res) {
   res.sendfile('index.html');

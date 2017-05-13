@@ -2,6 +2,7 @@ var Base = require('yeoman-generator').Base;
 var beautify = require('gulp-beautify');
 var gulpIf = require('gulp-if');
 var utils = require('../utils');
+var connect = require('./connect');
 
 class MongoMainGenerator extends Base {
   constructor(args, options) {
@@ -31,6 +32,8 @@ class MongoMainGenerator extends Base {
     ], {
       save: true
     });
+
+    connect.insertConnection(this);
   }
 
   install() {
