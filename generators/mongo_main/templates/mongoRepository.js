@@ -34,13 +34,14 @@ class MongoRepository {
       return record.save();
     }
 
-    let model = new this.modelClass(record);
+    let recordToSave = _.omit(record, ['id']);
 
-    if (record.id) {
-      model._id = record.id;
-    }
+    recordToSave._id = record.id;
 
-    return model.save();
+    return this.modelClass.findOneAndUpdate({
+      _id: record.id
+    }, recordToSave).exec();
+
   }
 
   search(queryObject) {
