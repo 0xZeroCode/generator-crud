@@ -46,11 +46,43 @@ class MongoRepository {
 
   search(queryObject) {
     return this.modelClass.find(
-      this._hybridParametersObject(queryObject)
-    ).exec();
+        this._hybridParametersObject(queryObject)
+      )
+      .sort({
+        createDate: -1
+      })
+      .exec();
   }
 
-  
+  find(queryObject) {
+    return this.modelClass.find(queryObject)
+      .sort({
+        createDate: -1
+      })
+      .exec();
+  }
+
+  findOne(queryObject) {
+    return this.modelClass.findOne(queryObject)
+      .sort({
+        createDate: -1
+      })
+      .exec();
+  }
+
+  deleteById(id) {
+    return this.modelClass.findByIdAndRemove(id).exec();
+  }
+
+  deleteByQuery(queryObject) {
+    return this.modelClass.find(queryObject)
+      .remove()
+      .exec();
+  }
+
+  searchCount(queryObject) {
+    
+  }
 
   _hybridParametersObject(queryObject) {
     const likeObject = this._likeParametersObject(
