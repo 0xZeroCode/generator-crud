@@ -55,16 +55,6 @@ router.delete('/:id', function (req, res, next) {
       });
 });
 
-router.get('/fullTextSearch/:searchString', function (req, res, next) {
-  <%= managerName %>.fullTextSearch(req.params.searchString)
-    .then(function (result) {
-      res.send(result);
-    })
-    .catch(function (error) {
-      next(error);
-    });
-});
-
 
 module.exports = {
   baseUrl: baseUrl,

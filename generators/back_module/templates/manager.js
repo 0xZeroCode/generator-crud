@@ -29,9 +29,6 @@ function delete<%= modelName %>(id) {
   return <%= modelName %>.findByIdAndRemove(id).exec();
 }
 
-function fullTextSearch(searchString) {
-
-}
 
 module.exports = {
   create<%= modelName %>: create<%= modelName %>,
