@@ -81,7 +81,29 @@ class MongoRepository {
   }
 
   searchCount(queryObject) {
-    
+    return this.modelClass.count(queryObject).exec();
+  }
+
+  pagedSearch(queryObject, pageNumber, pageSize) {
+    if (!pageSize) {
+      pageSize = config.get('defaultPageSize');
+    }
+
+    let offset = 0;
+
+    if (pageNumber) {
+      offset = (pageNumber - 1) * pageSize;
+    }
+
+    return this.modelClass.find(
+        this._hybridParametersObject(queryObject)
+      )
+      .sort({
+        createDate: -1
+      })
+      .skip(offset)
+      .limit(pageSize)
+      .exec();
   }
 
   _hybridParametersObject(queryObject) {
