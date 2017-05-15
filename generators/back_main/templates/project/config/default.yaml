@@ -1,6 +1,6 @@
 port: 3000
+defaultPageSize: 10
 mongoDatabase: "mongodb://localhost:27017/<%= dbName %>"
 elastic:
   host: "http://localhost:9200"
   loggingLevel: "debug"
-
