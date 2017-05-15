@@ -34,6 +34,13 @@ class MongoMainGenerator extends Base {
     });
 
     connect.insertConnection(this);
+
+    const repoFileName = 'mongoRepository.js';
+
+    this.fs.copy(
+      this.templatePath(repoFileName),
+      this.destinationPath('src/infrastructure/' + repoFileName)
+    );
   }
 
   install() {
