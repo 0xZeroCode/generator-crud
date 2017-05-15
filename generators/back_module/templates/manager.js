@@ -1,40 +1,65 @@
-var <%= modelName %> = require('../models/<%= modelLowerName %>');
+const repository = require('../infrastructure/<%= repositoryName %>');
+const utils = require('../utils');
+const Promise = require('bluebird');
 
-function create<%= modelName %>(<%= modelLowerName %>Object) {
-  var <%= modelLowerName %> = new <%= modelName %>(<%= modelLowerName %>Object);
+function create<%= modelName %> (<%= modelLowerName %>Object) {
+  <%= modelLowerName %>Object.createDate = new Date();
 
-  <%= modelLowerName %>.createDate = new Date();
-
-  return <%= modelLowerName %>.save()
-    .then(function () {
-      return <%= modelLowerName %>._id;
-    });
+  return repository.save(<%= modelLowerName %>Object);
 }
 
-function get<%= modelName %>s() {
-  return <%= modelName %>.find({}).exec();
+function getById(id) {
+  return repository.getById(id);
 }
 
-function get<%= modelName %>ById(id) {
-  return <%= modelName %>.findOne({_id: id}).exec();
-}
-
-function update<%= modelName %>(id, body) {
+function update<%= modelName %> (id, body) {
   body.updateDate = new Date();
+  body.id = id;
 
-  return <%= modelName %>.findOneAndUpdate({_id: id}, body).exec();
+  return repository.update(body);
 }
 
-function delete<%= modelName %>(id) {
-  return <%= modelName %>.findByIdAndRemove(id).exec();
+function search(query) {
+  return repository.search(query);
+}
+
+function find(query) {
+  return repository.find(query);
+}
+
+function findOne(query) {
+  return repository.findOne(query);
+}
+
+function delete<%= modelName %> (id) {
+  return repository.deleteById(id);
+}
+
+function pagedSearch(query, pageNumber, pageSize) {
+  let queryObject = _.omit(
+    query, ['pageNumber', 'pageSize']
+  );
+
+  return Promise.join(
+    repository.pagedSearch(queryObject, pageNumber, pageSize),
+    repository.searchCount(queryObject),
+    function (result, count) {
+      return {
+        count: count,
+        result: result
+      };
+    }
+  );
 }
 
 
 module.exports = {
   create<%= modelName %>: create<%= modelName %>,
-  get<%= modelName %>s: get<%= modelName %>s,
-  get<%= modelName %>ById: get<%= modelName %>ById,
   update<%= modelName %>: update<%= modelName %>,
   delete<%= modelName %>: delete<%= modelName %>,
-  fullTextSearch: fullTextSearch
+  getById: getById,
+  search: search,
+  find: find,
+  findOne: findOne,
+  pagedSearch: pagedSearch
 };
