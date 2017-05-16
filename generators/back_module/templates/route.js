@@ -1,58 +1,63 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var <%= managerName %> = require('../application/<%= managerName %>');
+const <%= managerName %> = require('../application/<%= managerName %>');
+const responseSender = require('../responseSender');
 
-var baseUrl = '<%= baseUrl %>';
+const baseUrl = '<%= baseUrl %>';
 
 router.post('/', function (req, res, next) {
-  <%= managerName %>.create<%= modelName %>(req.body)
+  const promise = <%= managerName %>.create<%= modelName %>(req.body)
       .then(function (id) {
-        res.send({success: true, id: id});
-      })
-      .catch(function (error) {
-        next(error);
+        return {
+          success: true,
+          id: id
+        };
       });
+
+  responseSender.sendPromiseResult(promise, req, res, next);
 });
 
 router.get('/', function (req, res, next) {
-  <%= managerName %>.get<%= modelName %>s()
-      .then(function (result) {
-        res.send(result);
-      })
-      .catch(function (error) {
-        next(error);
-      });
+  const promise = <%= managerName %>.find(req.query);
+
+  responseSender.sendPromiseResult(promise, req, res, next);
+});
+
+router.get('/search', function (req, res, next) {
+  const promise = <%= managerName %>.search(req.query);
+
+  responseSender.sendPromiseResult(promise, req, res, next);
+});
+
+router.get('/pagedSearch', function (req, res, next) {
+  const promise = <%= managerName %>.pagedSearch(req.query, req.query.pageNumber, req.query.pageSize);
+
+  responseSender.sendPromiseResult(promise, req, res, next);
 });
 
 router.get('/:id', function (req, res, next) {
-  <%= managerName %>.get<%= modelName %>ById(req.params.id)
-      .then(function (result) {
-        res.send(result);
-      })
-      .catch(function (error) {
-        next(error);
-      });
+  const promise = <%= managerName %>.getById(req.params.id);
+
+  responseSender.sendPromiseResult(promise, req, res, next);
 });
 
 router.put('/:id', function (req, res, next) {
-  <%= managerName %>.update<%= modelName %>(req.params.id, req.body)
+  const promise = <%= managerName %>.update<%= modelName %>(req.params.id, req.body)
       .then(function () {
-        res.send({success: true});
-      })
-      .catch(function (error) {
-        next(error);
+        return {success: true};
       });
+
+  responseSender.sendPromiseResult(promise, req, res, next);
 });
 
 router.delete('/:id', function (req, res, next) {
-  <%= managerName %>.delete<%= modelName %>(req.params.id)
+  const promise = <%= managerName %>.delete<%= modelName %>(req.params.id)
       .then(function () {
-        res.send({success: true});
-      })
-      .catch(function (error) {
-        next(error);
+        return {success: true};
       });
+
+  responseSender.sendPromiseResult(promise, req, res, next);
 });
 
 
