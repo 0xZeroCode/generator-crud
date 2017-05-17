@@ -16,6 +16,12 @@ class BackMainGenerator extends Base {
 
     this.props = options;
 
+    this.webFolderRelativePath = '../public/dist';
+
+    if (options.ng1) {
+      this.webFolderRelativePath = '../public';
+    }
+
   }
 
   prompting() {
@@ -78,9 +84,11 @@ class BackMainGenerator extends Base {
       }
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('project/src'),
-      this.destinationPath('src')
+      this.destinationPath('src'), {
+        webFolderRelativePath: this.webFolderRelativePath
+      }
     );
 
     if (!this.fs.exists(this.destinationPath('package.json'))) {

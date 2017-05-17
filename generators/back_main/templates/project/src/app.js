@@ -13,12 +13,14 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '<%= webFolderRelativePath %>')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
 
 app.get('*', function(req, res) {
-  res.sendfile('index.html');
+  res.sendFile('index.html', {
+       root: path.join(__dirname, '<%= webFolderRelativePath %>')
+  });
 });
 
 app.use(function(err, req, res, next) {
