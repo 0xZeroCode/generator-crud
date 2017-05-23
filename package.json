@@ -17,6 +17,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "chalk": "^1.1.3",
     "gulp-beautify": "^2.0.1",
     "gulp-if": "^2.0.2",
