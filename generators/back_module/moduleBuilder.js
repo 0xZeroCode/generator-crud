@@ -57,20 +57,6 @@ function createManagerFile(generator) {
   );
 }
 
-function createMongoModelFile(generator) {
-  var modelFileName = names.toModelLowerName(generator.moduleName) + generator.extension;
-
-  var modelTemplateVariables = {
-    modelName: names.toModelName(generator.moduleName)
-  };
-
-  generator.fs.copyTpl(
-    generator.templatePath('model.js'),
-    generator.destinationPath('src/models/' + modelFileName),
-    modelTemplateVariables
-  );
-}
-
 function createElasticManagerFile(generator) {
   var managerFileName = names.toManagerName(generator.moduleName) + generator.extension;
 
@@ -105,7 +91,6 @@ function createElasticRepositoryFile(generator) {
 module.exports = {
   createRouteFile: createRouteFile,
   createManagerFile: createManagerFile,
-  createMongoModelFile: createMongoModelFile,
   writeRoutesUseInApp: writeRoutesUseInApp,
   createElasticManagerFile: createElasticManagerFile,
   createElasticRepositoryFile: createElasticRepositoryFile
