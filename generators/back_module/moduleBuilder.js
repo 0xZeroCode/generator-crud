@@ -22,7 +22,7 @@ function writeRoutesUseInApp(generator) {
 
   var routeDeclareBeforeApp =
     `var ${routeName} = require('./routes/${routeName}');
-    
+
 ${appDeclareString}`;
 
   var contents = generator.fs.read(generator.destinationPath('src/app.js'));
@@ -41,12 +41,13 @@ ${appHtmlGet}`;
   generator.fs.write(generator.destinationPath('src/app.js'), contents);
 }
 
-function createMongoManagerFile(generator) {
+function createManagerFile(generator) {
   var managerFileName = names.toManagerName(generator.moduleName) + generator.extension;
 
   var managerTemplateVariables = {
     modelName: names.toModelName(generator.moduleName),
-    modelLowerName: names.toModelLowerName(generator.moduleName)
+    modelLowerName: names.toModelLowerName(generator.moduleName),
+    repositoryName: names.toRepositoryName(generator.moduleName)
   };
 
   generator.fs.copyTpl(
@@ -103,7 +104,7 @@ function createElasticRepositoryFile(generator) {
 
 module.exports = {
   createRouteFile: createRouteFile,
-  createMongoManagerFile: createMongoManagerFile,
+  createManagerFile: createManagerFile,
   createMongoModelFile: createMongoModelFile,
   writeRoutesUseInApp: writeRoutesUseInApp,
   createElasticManagerFile: createElasticManagerFile,
