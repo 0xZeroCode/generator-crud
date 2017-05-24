@@ -2,9 +2,6 @@ var Base = require('yeoman-generator').Base;
 var beautify = require('gulp-beautify');
 var gulpIf = require('gulp-if');
 
-var builder = require('./modulePartsBuilder');
-var indexHtmlEditor = require('./indexHtmlEditor');
-var appJsEditor = require('./appJsEditor');
 var utils = require('./utils');
 
 
@@ -14,7 +11,10 @@ class CrudFrontModuleGenerator extends Base {
 
     this.argument('moduleName', {type: String, required: true});
 
-    this.appName = utils.getAppName(this);
+    this.option('ng1');
+
+    if (options.ng1) this.composeWith('crud:ng1_module', {args: args, options: options});
+    else this.composeWith('crud:ng2_module', {args: args, options: options});
   }
 
   prompting() {
@@ -27,17 +27,6 @@ class CrudFrontModuleGenerator extends Base {
   }
 
   writing() {
-    this.registerTransformStream(gulpIf(utils.fileCondition, beautify({indentSize: 2})));
-
-    builder.createModuleJsFile(this);
-
-    builder.createModuleHtmlFile(this);
-
-    indexHtmlEditor.addJsScriptDeclarationInHtml(this);
-
-    indexHtmlEditor.addSidenavButton(this);
-
-    appJsEditor.addModuleInDependencies(this);
   }
 
   install() {
