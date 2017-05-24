@@ -1,12 +1,8 @@
 var Base = require('yeoman-generator').Base;
 var beautify = require('gulp-beautify');
 var gulpIf = require('gulp-if');
-
-function fileCondition(file) {
-  var extension = file.relative.split('.')[1];
-
-  return file.relative !== '.gitignore' && extension !== 'html';
-} //TODO: fix copy/paste
+const utils = require('../utils');
+const fieldsPrompt = require('../fieldsPrompt');
 
 
 class CrudModuleGenerator extends Base {
@@ -20,16 +16,14 @@ class CrudModuleGenerator extends Base {
   }
 
   prompting() {
-    var prompts = [];
-
-    return this.prompt(prompts).then(function (props) {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    }.bind(this));
+    fieldsPrompt.prompt(this)
+      .then(function (fields) {
+        this.fields = fields;
+        console.log(this.fields);
+      }.bind(this))
   }
 
   writing() {
-    this.registerTransformStream(gulpIf(fileCondition, beautify({indentSize: 2})));
   }
 
   install() {
