@@ -5,6 +5,7 @@ var moduleBuilder = require('./moduleBuilder');
 const fieldsPrompt = require('../fieldsPrompt');
 const Promise = require('bluebird');
 const utils = require('../utils');
+const gulpIf = require('gulp-if');
 
 global.Promise = Promise;
 
@@ -60,9 +61,9 @@ class CrudBackModuleGenerator extends Base {
   }
 
   writing() {
-    this.registerTransformStream(beautify({
+    this.registerTransformStream(gulpIf(utils.fileCondition, beautify({
       indentSize: 2
-    }));
+    })));
 
     moduleBuilder.createRouteFile(this);
 
