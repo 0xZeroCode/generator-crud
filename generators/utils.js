@@ -1,4 +1,6 @@
 const path = require('path');
+const Promise = require('bluebird');
+const fieldsPrompt = require('./fieldsPrompt');
 
 function fileCondition(file) {
   var extension = file.relative.split('.')[1];
@@ -26,7 +28,21 @@ function projectPrompts(generator) {
   return prompts;
 }
 
+function promptFieldsIfNotPrompted(generator) {
+  let optionsPromise = Promise.reslove(generator.options);
+
+  if (!generator.options.fields) {
+    optionsPromise = fieldsPrompt.prompt(generator)
+      .then(function (fields) {
+        return Object.assign({fields: fields}, generator.options);
+      }.bind(generator));
+  }
+
+  return optionsPromise;
+}
+
 module.exports = {
   fileCondition: fileCondition,
-  projectPrompts: projectPrompts
+  projectPrompts: projectPrompts,
+  promptFieldsIfNotPrompted: promptFieldsIfNotPrompted
 };

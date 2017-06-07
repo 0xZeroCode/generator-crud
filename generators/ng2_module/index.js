@@ -6,11 +6,15 @@ const _ = require('lodash');
 
 class AngularTwoModuleGenerator extends Base {
   constructor(args, options) {
-
+    this.args = args;
+    this.options = options;
   }
 
   prompting() {
-
+    return utils.promptFieldsIfNotPrompted(this)
+      .then(function (params) {
+        this.params = params;
+      });
   }
 
   writing() {}

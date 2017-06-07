@@ -11,15 +11,22 @@ class CrudModuleGenerator extends Base {
 
     this.argument('moduleName', {type: String, required: true});
 
-    this.composeWith('crud:back_module', {args: args, options: options});
-    this.composeWith('crud:front_module', {args: args, options: options});
+    this.args = args;
+    this.options = options;
+
   }
 
   prompting() {
-    fieldsPrompt.prompt(this)
+    return fieldsPrompt.prompt(this)
       .then(function (fields) {
         this.fields = fields;
         console.log(this.fields);
+
+        let params = Object.assign({fields: this.fields}, this.options);
+
+        this.composeWith('crud:back_module', {args: this.args, options: params});
+        this.composeWith('crud:front_module', {args: this.args, options: params});
+
       }.bind(this))
   }
 

@@ -15,16 +15,25 @@ class MongoModuleGenerator extends Base {
       required: true
     });
 
+    this.args = args;
+    this.options = options;
+
     this.extension = '.js';
   }
 
   prompting() {
-    var prompts = [];
+    return utils.promptFieldsIfNotPrompted(this)
+      .then(function(params) {
+        this.params = params;
 
-    return this.prompt(prompts).then(function(props) {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    }.bind(this));
+        var prompts = [];
+
+        return this.prompt(prompts);
+      })
+      .then(function(props) {
+        // To access props later use this.props.someAnswer;
+        this.props = props;
+      }.bind(this));
   }
 
   writing() {
