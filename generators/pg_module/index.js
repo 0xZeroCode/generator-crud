@@ -8,6 +8,11 @@ class PostgresModuleGenerator extends Base {
   constructor(args, options) {
     super(args, options);
 
+    this.argument('moduleName', {
+      type: String,
+      required: true
+    });
+
     this.args = args;
     this.options = options;
   }
