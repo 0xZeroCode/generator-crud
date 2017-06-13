@@ -34,13 +34,9 @@ class MongoRepository {
       return record.save();
     }
 
-    let recordToSave = _.omit(record, ['id']);
-
-    recordToSave._id = record.id;
-
     return this.modelClass.findOneAndUpdate({
       _id: record.id
-    }, recordToSave).exec();
+    }, record).exec();
 
   }
 
