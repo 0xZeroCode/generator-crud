@@ -4,6 +4,8 @@ const gulpIf = require('gulp-if');
 const utils = require('../utils');
 const _ = require('lodash');
 
+const db = require('./db');
+
 class PostgresModuleGenerator extends Base {
   constructor(args, options) {
     super(args, options);
@@ -32,7 +34,9 @@ class PostgresModuleGenerator extends Base {
       }.bind(this));
   }
 
-  writing() {}
+  writing() {
+    db.generateSql(this);
+  }
 
   install() {
     this.installDependencies();

@@ -29,7 +29,7 @@ function projectPrompts(generator) {
 }
 
 function promptFieldsIfNotPrompted(generator) {
-  let optionsPromise = Promise.reslove(generator.options);
+  let optionsPromise = Promise.resolve(generator.options);
 
   if (!generator.options.fields) {
     optionsPromise = fieldsPrompt.prompt(generator)

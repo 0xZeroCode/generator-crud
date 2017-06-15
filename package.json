@@ -12,7 +12,7 @@
     "yeoman-generator"
   ],
   "scripts": {
-    "test": "gulp",
+    "test": "mocha",
     "prepublish": "gulp prepublish"
   },
   "license": "MIT",
@@ -36,6 +36,8 @@
     "gulp-mocha": "^2.2.0",
     "gulp-nsp": "^2.4.2",
     "gulp-plumber": "^1.1.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
     "yeoman-assert": "^2.2.2",
     "yeoman-test": "^1.6.0"
   },
