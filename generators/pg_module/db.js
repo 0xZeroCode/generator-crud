@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const names = require('./names');
 
 const sqlTypesMap = {
   'string': 'varchar',
@@ -16,7 +17,7 @@ exports.generateSql = function (generator) {
 
   const sqlFields = fields.map(toSqlField);
 
-  const tableName = generator.moduleName;
+  const tableName = names.toTableName(generator.moduleName);
 
   generator.fs.copyTpl(
     generator.templatePath('model.sql'),

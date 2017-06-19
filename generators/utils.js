@@ -41,8 +41,19 @@ function promptFieldsIfNotPrompted(generator) {
   return optionsPromise;
 }
 
+function toPluralForm(name) {
+  const exceptionSuffixes = ['s', 'x', 'o', 'ch', 'sh'];
+
+  for (let suffix of exceptionSuffixes) {
+    if (name.endsWith(suffix)) return name + 'es';
+  }
+
+  return name + 's';
+}
+
 module.exports = {
   fileCondition: fileCondition,
   projectPrompts: projectPrompts,
-  promptFieldsIfNotPrompted: promptFieldsIfNotPrompted
+  promptFieldsIfNotPrompted: promptFieldsIfNotPrompted,
+  toPluralForm: toPluralForm
 };
