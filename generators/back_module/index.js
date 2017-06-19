@@ -36,7 +36,7 @@ class CrudBackModuleGenerator extends Base {
             args: this.args,
             options: params
           });
-        } else if (options.elastic) {
+        } else if (this.options.elastic) {
           this.composeWith('crud:elastic_module', {
             args: this.args,
             options: params
@@ -48,7 +48,7 @@ class CrudBackModuleGenerator extends Base {
           });
         }
 
-      })
+      }.bind(this))
       .then(function() {
         var prompts = [];
 
@@ -61,9 +61,6 @@ class CrudBackModuleGenerator extends Base {
   }
 
   writing() {
-    this.registerTransformStream(gulpIf(utils.fileCondition, beautify({
-      indentSize: 2
-    })));
 
     moduleBuilder.createRouteFile(this);
 
