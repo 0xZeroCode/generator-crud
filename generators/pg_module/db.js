@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 const sqlTypesMap = {
   'string': 'varchar',
   'number': 'bigint',
@@ -14,7 +16,7 @@ exports.generateSql = function (generator) {
 
   const sqlFields = fields.map(toSqlField);
 
-  const tableName = generator.args.moduleName;
+  const tableName = generator.moduleName;
 
   generator.fs.copyTpl(
     generator.templatePath('model.sql'),
@@ -33,7 +35,7 @@ function isSearchableField(field) {
 
 function toSqlField(field) {
   return {
-    name: field.name,
+    name: _.snakeCase(field.name),
     type: sqlTypesMap[field.type]
   };
 }
