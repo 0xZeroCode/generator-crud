@@ -1,11 +1,12 @@
-var _ = require('lodash');
+const _ = require('lodash');
+const utils = require('../utils');
 
 function toRouteName(name) {
-  return _.camelCase(name) + 's';
+  return utils.toPluralForm(_.camelCase(name));
 }
 
 function toManagerName(name) {
-  return _.camelCase(name) + 's' + 'Manager';
+  return utils.toPluralForm(_.camelCase(name)) + 'Manager';
 }
 
 function toModelName(name) {
@@ -17,7 +18,7 @@ function toModelLowerName(name) {
 }
 
 function toRepositoryName(name) {
-  return _.camelCase(name) + 's' + 'Repository';
+  return utils.toPluralForm(_.camelCase(name)) + 'Repository';
 }
 
 
@@ -28,6 +29,3 @@ module.exports = {
   toModelLowerName: toModelLowerName,
   toRepositoryName: toRepositoryName
 };
-
-
-
