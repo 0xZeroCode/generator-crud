@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS <%= table %>(
   id                   BIGSERIAL PRIMARY KEY,
-  <% for (let i = 0; i < fields.length - 1; i++) {%><%= fields[i].name %>       <%= fields[i].type %>,
-  <% } %><%= fields[fields.length - 1].name %>       <%= fields[fields.length - 1].type %>
+  <% for (let i = 0; i < fields.length; i++) {%><%= fields[i].name %>       <%= fields[i].type %>,
+  <% } %>create_date       timestamptz,
+  update_date       timestamptz
 );
 
 <% for (let i = 0; i < searchableFields.length; i++) {%>
