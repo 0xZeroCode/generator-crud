@@ -51,9 +51,14 @@ function toPluralForm(name) {
   return name + 's';
 }
 
+function isSearchableField(field) {
+  return field.type === 'string' && field.properties.includes('searchable');
+}
+
 module.exports = {
   fileCondition: fileCondition,
   projectPrompts: projectPrompts,
   promptFieldsIfNotPrompted: promptFieldsIfNotPrompted,
-  toPluralForm: toPluralForm
+  toPluralForm: toPluralForm,
+  isSearchableField: isSearchableField
 };

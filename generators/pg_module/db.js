@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const names = require('./names');
+const utils = require('../utils');
 
 const sqlTypesMap = {
   'string': 'varchar',
@@ -13,7 +14,7 @@ const sqlTypesMap = {
 exports.generateSql = function (generator) {
   const fields = generator.params.fields;
 
-  const searchableSqlFields = fields.filter(isSearchableField).map(toSqlField);
+  const searchableSqlFields = fields.filter(utils.isSearchableField).map(toSqlField);
 
   const sqlFields = fields.map(toSqlField);
 
@@ -30,9 +31,6 @@ exports.generateSql = function (generator) {
   );
 };
 
-function isSearchableField(field) {
-  return field.type === 'string' && field.properties.includes('searchable');
-}
 
 function toSqlField(field) {
   return {

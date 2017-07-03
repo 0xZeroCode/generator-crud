@@ -5,6 +5,7 @@ const utils = require('../utils');
 const _ = require('lodash');
 
 const db = require('./db');
+const repository = require('./repository');
 
 class PostgresModuleGenerator extends Base {
   constructor(args, options) {
@@ -36,6 +37,8 @@ class PostgresModuleGenerator extends Base {
 
   writing() {
     db.generateSql(this);
+
+    repository.generateRepo(this);
   }
 
   install() {
