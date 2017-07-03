@@ -12,26 +12,53 @@ describe('generator-crud:pg_module', function() {
     it('should generate CREATE TABLE command with fields', function() {
       return helpers.run(generatorLocation)
         .withArguments(['book'])
-        .withPrompts({
-          name: 'name',
-          type: 'string',
-          properties: ['searchable', 'showable']
-        })
-        .withPrompts({
-          name: 'author',
-          type: 'string',
-          properties: ['searchable', 'showable']
-        })
-        .withPrompts({
-          name: 'done!'
-        })
+        .withOptions({fields: [
+          {
+            name: 'name',
+            type: 'string',
+            properties: ['searchable', 'showable']
+          },
+          {
+            name: 'author',
+            type: 'string',
+            properties: ['searchable', 'showable']
+          }
+        ]})
         .then(function(dir) {
-          const file = dir + '/db/book.sql';
+          const file = dir + '/db/books.sql';
           assert.file(file);
 
           assert.fileContent(file, /name\ *varchar/gim);
         });
     });
+
+  });
+
+  describe('repo file generation', function () {
+
+    it('should generate repository file with fields', function () {
+      return helpers.run(generatorLocation)
+        .withArguments(['rectangle'])
+        .withOptions({fields: [
+          {
+            name: 'width',
+            type: 'number',
+            properties: ['showable']
+          },
+          {
+            name: 'height',
+            type: 'number',
+            properties: ['showable']
+          }
+        ]})
+        .then(function (dir) {
+          const file = dir + '/src/infrastructure/rectanglesRepository.js';
+
+          assert.file(file);
+
+          assert.fileContent(file, 'width');
+        })
+    })
 
   });
 
