@@ -1,21 +1,12 @@
 
 import { Observable } from 'rxjs/Rx';
 import { Headers } from '@angular/http';
-import { get, set } from 'js-cookie';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { handleResponse, handleError } from './service-response-handler';
-
-export const tokenName = 'accessToken';
-
-export const orgInfoKey = 'organization';
-
-export const authHeaderName = 'authorization';
-
-export const loginUrl = '/um';
 
 export function objectToRawString(object) {
   return Object.keys(object)
@@ -50,10 +41,6 @@ export function parseToken(jwt) {
 
 export function getHeaders() {
   const headers: Headers = new Headers({ 'Content-Type': 'application/json' });
-
-  if (get(tokenName)) {
-    headers.set(authHeaderName, get(tokenName));
-  }
 
   return headers;
 }

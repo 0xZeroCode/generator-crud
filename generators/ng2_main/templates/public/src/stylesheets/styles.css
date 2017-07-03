@@ -37,7 +37,6 @@
 .toolbar-button {
   background: transparent;
   display: inline-block;
-  /*font-size: 100%;*/
 }
 
 .toolbar {
@@ -189,7 +188,6 @@
 
 .sidenav {
   height: 100%;
-  /* 100% Full-height */
   width: 0;
   /* 0 width - change this with JavaScript */
   position: fixed;

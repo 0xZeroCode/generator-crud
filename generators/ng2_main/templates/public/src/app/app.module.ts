@@ -9,10 +9,6 @@ import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
 
 import { AppComponent } from './app.component';
 
-import { UserService } from './user.service';
-
-import { AuthGuard } from './auth-guard.service';
-
 const routes: Route[] = [
 
 ];
@@ -35,7 +31,6 @@ const routes: Route[] = [
     ProgressbarModule.forRoot(),
     NKDatetimeModule
   ],
-  providers: [AuthGuard, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

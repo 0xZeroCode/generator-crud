@@ -71,7 +71,9 @@ class AngularTwoMainGenerator extends Base {
     var parameters = {
       name: this.props.name,
       license: this.props.license,
-      prefix: this.props.prefix
+      prefix: this.props.prefix,
+      successMessage: 'success',
+      internalServerErrorMessage: '500 internal server error'
     };
 
     this.fs.copyTpl(
