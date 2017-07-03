@@ -2,7 +2,7 @@ const repository = require('../infrastructure/<%= repositoryName %>');
 const utils = require('../utils');
 const Promise = require('bluebird');
 
-function create<%= modelName %> (<%= modelLowerName %>Object) {
+function create<%= modelName %>(<%= modelLowerName %>Object) {
   <%= modelLowerName %>Object.createDate = new Date();
 
   return repository.save(<%= modelLowerName %>Object);
@@ -12,7 +12,7 @@ function getById(id) {
   return repository.getById(id);
 }
 
-function update<%= modelName %> (id, body) {
+function update<%= modelName %>(id, body) {
   body.updateDate = new Date();
   body.id = id;
 
@@ -31,7 +31,7 @@ function findOne(query) {
   return repository.findOne(query);
 }
 
-function delete<%= modelName %> (id) {
+function delete<%= modelName %>(id) {
   return repository.deleteById(id);
 }
 

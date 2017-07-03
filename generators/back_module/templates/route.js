@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const <%= managerName %> = require('../application/<%= managerName %>');
-const responseSender = require('../responseSender');
+const sendPromiseResult = require('../responseSender').sendPromiseResult;
 
 const baseUrl = '<%= baseUrl %>';
 
@@ -15,31 +15,31 @@ router.post('/', function (req, res, next) {
         };
       });
 
-  responseSender.sendPromiseResult(promise, req, res, next);
+  sendPromiseResult(promise, req, res, next);
 });
 
 router.get('/', function (req, res, next) {
   const promise = <%= managerName %>.find(req.query);
 
-  responseSender.sendPromiseResult(promise, req, res, next);
+  sendPromiseResult(promise, req, res, next);
 });
 
 router.get('/search', function (req, res, next) {
   const promise = <%= managerName %>.search(req.query);
 
-  responseSender.sendPromiseResult(promise, req, res, next);
+  sendPromiseResult(promise, req, res, next);
 });
 
 router.get('/pagedSearch', function (req, res, next) {
   const promise = <%= managerName %>.pagedSearch(req.query, req.query.pageNumber, req.query.pageSize);
 
-  responseSender.sendPromiseResult(promise, req, res, next);
+  sendPromiseResult(promise, req, res, next);
 });
 
 router.get('/:id', function (req, res, next) {
   const promise = <%= managerName %>.getById(req.params.id);
 
-  responseSender.sendPromiseResult(promise, req, res, next);
+  sendPromiseResult(promise, req, res, next);
 });
 
 router.put('/:id', function (req, res, next) {
@@ -48,7 +48,7 @@ router.put('/:id', function (req, res, next) {
         return {success: true};
       });
 
-  responseSender.sendPromiseResult(promise, req, res, next);
+  sendPromiseResult(promise, req, res, next);
 });
 
 router.delete('/:id', function (req, res, next) {
@@ -57,7 +57,7 @@ router.delete('/:id', function (req, res, next) {
         return {success: true};
       });
 
-  responseSender.sendPromiseResult(promise, req, res, next);
+  sendPromiseResult(promise, req, res, next);
 });
 
 
