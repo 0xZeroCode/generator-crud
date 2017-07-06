@@ -1,6 +1,6 @@
 import { showSuccessToast, showWarningToast, showFailToast } from './toast';
 
-const successMessage = '<%= successMesage %>';
+const successMessage = '<%= successMessage %>';
 const internalServerErrorMessage = '<%= internalServerErrorMessage %>';
 
 export function handleResponse(result) {
