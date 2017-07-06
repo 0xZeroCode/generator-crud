@@ -30,6 +30,20 @@ class AngularTwoMainGenerator extends Base {
 
   writing() {
 
+    var parameters = {
+      name: this.props.name,
+      license: this.props.license,
+      prefix: this.props.prefix,
+      successMessage: 'success',
+      internalServerErrorMessage: '500 internal server error'
+    };
+
+    this.fs.copyTpl(
+      this.templatePath('public'),
+      this.destinationPath('public'),
+      parameters
+    );
+
     this.npmInstall([
       '@angular/common',
       '@angular/compiler',
@@ -68,24 +82,11 @@ class AngularTwoMainGenerator extends Base {
       'cwd': this.destinationPath('public')
     });
 
-    var parameters = {
-      name: this.props.name,
-      license: this.props.license,
-      prefix: this.props.prefix,
-      successMessage: 'success',
-      internalServerErrorMessage: '500 internal server error'
-    };
-
-    this.fs.copyTpl(
-      this.templatePath('public'),
-      this.destinationPath('public'),
-      parameters
-    );
-
     var hiddenFiles = [
       '.gitignore',
       '.editorconfig',
-      '.angular-cli.json'
+      '.angular-cli.json',
+      'src/assets/.gitkeep'
     ];
 
     hiddenFiles.forEach(function(file) {
