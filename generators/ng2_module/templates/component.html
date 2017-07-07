@@ -1,0 +1,8 @@
+<div class="searchArea">
+
+</div>
+
+<div class="columnDirection scroller">
+  <<%= listItemComponentTagName %> *ngFor="let item of <%= modelInPlural %>" [<%= model %>]="item" (modalToggle)="modalToggle($event)">
+  </<%= listItemComponentTagName %>>
+</div>
