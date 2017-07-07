@@ -48,6 +48,8 @@ function toPluralForm(name) {
     if (name.endsWith(suffix)) return name + 'es';
   }
 
+  if (name.endsWith('y')) return name.substring(0, name.length - 1) + 'ies';
+
   return name + 's';
 }
 
