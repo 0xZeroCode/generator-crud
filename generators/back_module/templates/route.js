@@ -8,10 +8,10 @@ const baseUrl = '<%= baseUrl %>';
 
 router.post('/', function (req, res, next) {
   const promise = <%= managerName %>.create<%= modelName %>(req.body)
-      .then(function (id) {
+      .then(function (result) {
         return {
           success: true,
-          id: id
+          data: result
         };
       });
 

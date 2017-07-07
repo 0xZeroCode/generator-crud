@@ -5,7 +5,13 @@ const Promise = require('bluebird');
 function create<%= modelName %>(<%= modelLowerName %>Object) {
   <%= modelLowerName %>Object.createDate = new Date();
 
-  return repository.save(<%= modelLowerName %>Object);
+  return repository.save(<%= modelLowerName %>Object)
+    .then(function (id) {
+      return {
+        id: id,
+        createDate: <%= modelLowerName %>Object.createDate
+      };
+    });
 }
 
 function getById(id) {
