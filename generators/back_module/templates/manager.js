@@ -46,9 +46,11 @@ function pagedSearch(query, pageNumber, pageSize) {
     query, ['pageNumber', 'pageSize']
   );
 
+  let clearedQuery = utils.clearObjectFromNulls(queryObject);
+
   return Promise.join(
-    repository.pagedSearch(queryObject, pageNumber, pageSize),
-    repository.searchCount(queryObject),
+    repository.pagedSearch(clearedQuery, pageNumber, pageSize),
+    repository.searchCount(clearedQuery),
     function (result, count) {
       return {
         count: count,
