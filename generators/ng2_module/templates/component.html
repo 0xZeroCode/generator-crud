@@ -6,3 +6,57 @@
   <<%= listItemComponentTagName %> *ngFor="let item of <%= modelInPlural %>" [<%= model %>]="item" (modalToggle)="modalToggle($event)">
   </<%= listItemComponentTagName %>>
 </div>
+
+<div class="pageNumbers" *ngIf="<%= modelInPlural %> && <%= modelInPlural %>.length > 0">
+    <pagination [totalItems]="totalCount" [(ngModel)]="currentPage" [maxSize]="maxVisible"
+      [itemsPerPage]="pageSize" class="pagination-sm" [boundaryLinks]="true" [rotate]="false"
+      (pageChanged)="pageChanged($event)"></pagination>
+</div>
+
+<div class="modal fade" bsModal #<%= model %>AddModal="bs-modal" [config]="{backdrop: 'static'}"
+    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="<%= model %>AddModal.hide(); onAddCancel();">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn-primary roundButton" (click)="<%= model %>AddModal.hide(); onAddSave();">
+            <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
+          </button>
+          <button class="fab roundButton" (click)="<%= model %>AddModal.hide(); onAddCancel();">
+            <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" bsModal #<%= model %>EditModal="bs-modal" [config]="{backdrop: 'static'}"
+    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="<%= model %>EditModal.hide(); modalInfo.cancel();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary roundButton" (click)="<%= model %>EditModal.hide(); onEditSave();">
+          <i class="fa fa-floppy-o fa-2x" aria-hidden="true"></i>
+        </button>
+        <button class="fab roundButton" (click)="<%= model %>EditModal.hide(); modalInfo.cancel();">
+          <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

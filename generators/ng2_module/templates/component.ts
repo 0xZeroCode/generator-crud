@@ -69,4 +69,13 @@ export class <%= componentName %> implements OnInit {
 
     this.editModal.show();
   }
+
+  onEditSave() {
+    this.service.update<%= modelUpperName %>(this.modalInfo.<%= model %>)
+      .then(result => {
+        if(!result.success) return;
+
+        this.modalInfo.onUpdate();
+      });
+  }
 }
