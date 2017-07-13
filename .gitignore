@@ -2,3 +2,4 @@ node_modules
 coverage
 .idea
 .tern-project
+npm-debug.log

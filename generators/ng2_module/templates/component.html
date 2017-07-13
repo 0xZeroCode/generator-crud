@@ -23,7 +23,17 @@
           </button>
         </div>
         <div class="modal-body">
-
+          <% for (let i = 0; i < fields.length; i++) { %>
+            <% if (!fields[i].properties.includes('showable')) continue; %>
+          <div class="form-group">
+            <label><%=fields[i].name%></label>
+            <% if (fields[i].type === 'date') {
+            %><datetime [(ngModel)]="<%= model %>ToAdd.<%=fields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
+            } else if (fields[i].type === 'datetime') {
+            %><datetime [(ngModel)]="<%= model %>ToAdd.<%=fields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
+            } else {%><input type="text" [(ngModel)]="<%= model %>ToAdd.<%=fields[i].name%>"><% } %>
+          </div>
+          <% } %>
         </div>
         <div class="modal-footer">
           <button class="btn-primary roundButton" (click)="<%= model %>AddModal.hide(); onAddSave();">
@@ -47,7 +57,17 @@
         </button>
       </div>
       <div class="modal-body">
-
+        <% for (let i = 0; i < fields.length; i++) { %>
+          <% if (!fields[i].properties.includes('showable')) continue; %>
+        <div class="form-group">
+          <label><%=fields[i].name%></label>
+          <% if (fields[i].type === 'date') {
+          %><datetime [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
+          } else if (fields[i].type === 'datetime') {
+          %><datetime [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
+          } else {%><input type="text" [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>"><% } %>
+        </div>
+        <% } %>
       </div>
       <div class="modal-footer">
         <button class="btn-primary roundButton" (click)="<%= model %>EditModal.hide(); onEditSave();">
