@@ -5,10 +5,10 @@
   <div class="form-group">
     <label><%=mainSearchFields[i].name%></label>
     <% if (mainSearchFields[i].type === 'date') {
-    %><datetime [(ngModel)]="searchParams.<%=mainSearchFields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
+    %><datetime [(ngModel)]="currentSearchParams.<%=mainSearchFields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
   } else if (mainSearchFields[i].type === 'datetime') {
-    %><datetime [(ngModel)]="searchParams.<%=mainSearchFields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
-  } else {%><input type="text" [(ngModel)]="searchParams.<%=mainSearchFields[i].name%>"><% } %>
+    %><datetime [(ngModel)]="currentSearchParams.<%=mainSearchFields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
+  } else {%><input type="text" [(ngModel)]="currentSearchParams.<%=mainSearchFields[i].name%>"><% } %>
   </div>
   <% } %><%
   if(mainSearchFields.length === 0) {
@@ -19,10 +19,10 @@
   <div class="form-group">
     <label><%=searchableFields[i].name%></label>
     <% if (searchableFields[i].type === 'date') {
-    %><datetime [(ngModel)]="searchParams.<%=searchableFields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
+    %><datetime [(ngModel)]="currentSearchParams.<%=searchableFields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
   } else if (searchableFields[i].type === 'datetime') {
-    %><datetime [(ngModel)]="searchParams.<%=searchableFields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
-  } else {%><input type="text" [(ngModel)]="searchParams.<%=searchableFields[i].name%>"><% } %>
+    %><datetime [(ngModel)]="currentSearchParams.<%=searchableFields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
+  } else {%><input type="text" [(ngModel)]="currentSearchParams.<%=searchableFields[i].name%>"><% } %>
   </div>
   <% } %><% } %>
 </div>
