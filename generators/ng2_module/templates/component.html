@@ -25,6 +25,9 @@
   } else {%><input type="text" [(ngModel)]="currentSearchParams.<%=searchableFields[i].name%>"><% } %>
   </div>
   <% } %><% } %>
+  <button class="btn btn-primary round-button" (click)="search()">
+    <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+  </button>
 </div>
 
 <div class="columnDirection scroller">
