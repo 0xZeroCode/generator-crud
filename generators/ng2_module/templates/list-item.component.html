@@ -1,0 +1,29 @@
+<div class="<%= listItemComponentClass %>">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title"></h4>
+    </div>
+    <div class="card-block">
+      <div class="borderLeftBox">
+        <%let showableFields = fields.filter(function (field) {
+            return field.properties.includes('showable');
+        });%><%
+        for (let i = 0; i < showableFields.length - 1; i++) {
+        %><label><%= showableFields[i].name %>:
+          <b>{{<%= model %>.<%= showableFields[i].name %>}}</b>
+        </label>
+        <br>
+        <% }
+        %><label><%= showableFields[showableFields.length - 1].name %>:
+          <b>{{<%= model %>.<%= showableFields[showableFields.length - 1].name %>}}</b>
+        </label>
+      </div>
+    </div>
+    <div class="card-footer rowDirection">
+      <span class="flex"></span>
+      <button class="btn-sm fab round-button" (click)="toggleModal()">
+        <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>
