@@ -61,6 +61,8 @@ export class <%= componentName %> implements OnInit {
         this.<%= model %>ToAdd.createDate = result.data.createDate;
 
         this.<%=modelInPlural%>.push(this.<%= model %>ToAdd);
+
+        this.<%= model %>ToAdd = {};
       });
   }
 
@@ -68,6 +70,17 @@ export class <%= componentName %> implements OnInit {
     this.modalInfo = info;
 
     this.editModal.show();
+  }
+
+  onRemove(<%= model %>) {
+    this.service.delete<%= modelUpperName %>(<%= model %>.id)
+      .then(result => {
+        if(!result.success) return;
+
+        const index = this.<%=modelInPlural%>.findIndex(item => item.id === <%= model %>.id);
+
+        this.<%=modelInPlural%>.splice(index, 1);
+      });
   }
 
   onEditSave() {

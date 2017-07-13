@@ -28,10 +28,13 @@
   <button class="btn btn-primary round-button" (click)="search()">
     <i class="fa fa-search fa-2x" aria-hidden="true"></i>
   </button>
+  <button class="btn btn-primary round-button" (click)="<%= model %>AddModal.show()">
+    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+  </button>
 </div>
 
 <div class="columnDirection scroller">
-  <<%= listItemComponentTagName %> *ngFor="let item of <%= modelInPlural %>" [<%= model %>]="item" (modalToggle)="modalToggle($event)">
+  <<%= listItemComponentTagName %> *ngFor="let item of <%= modelInPlural %>" [<%= model %>]="item" (modalToggle)="modalToggle($event)" (remove)="onRemove($event)">
   </<%= listItemComponentTagName %>>
 </div>
 
