@@ -24,13 +24,17 @@ fieldPrompts = [{
   {
     type: 'checkbox',
     name: 'properties',
-    message: 'field properties. searchable means: field can be searched by LIKE expression',
+    message: 'field properties. searchable means: field can be searched by LIKE expression. searchAreaInput means main search input field.',
     choices: [{
         name: 'showable',
         checked: true
       },
       {
         name: 'searchable',
+        checked: false
+      },
+      {
+        name: 'searchAreaInput',
         checked: false
       }
     ],

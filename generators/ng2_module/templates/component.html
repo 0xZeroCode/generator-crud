@@ -1,5 +1,30 @@
 <div class="searchArea">
-
+  <% for (let i = 0; i < mainSearchFields.length; i++) {
+  %><%
+    if (!mainSearchFields[i].properties.includes('showable')) continue; %>
+  <div class="form-group">
+    <label><%=mainSearchFields[i].name%></label>
+    <% if (mainSearchFields[i].type === 'date') {
+    %><datetime [(ngModel)]="searchParams.<%=mainSearchFields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
+  } else if (mainSearchFields[i].type === 'datetime') {
+    %><datetime [(ngModel)]="searchParams.<%=mainSearchFields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
+  } else {%><input type="text" [(ngModel)]="searchParams.<%=mainSearchFields[i].name%>"><% } %>
+  </div>
+  <% } %><%
+  if(mainSearchFields.length === 0) {
+  %><%
+  for (let i = 0; i < searchableFields.length; i++) {
+  %><%
+    if (!searchableFields[i].properties.includes('showable')) continue; %>
+  <div class="form-group">
+    <label><%=searchableFields[i].name%></label>
+    <% if (searchableFields[i].type === 'date') {
+    %><datetime [(ngModel)]="searchParams.<%=searchableFields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
+  } else if (searchableFields[i].type === 'datetime') {
+    %><datetime [(ngModel)]="searchParams.<%=searchableFields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
+  } else {%><input type="text" [(ngModel)]="searchParams.<%=searchableFields[i].name%>"><% } %>
+  </div>
+  <% } %><% } %>
 </div>
 
 <div class="columnDirection scroller">
