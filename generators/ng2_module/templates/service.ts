@@ -16,14 +16,14 @@ export class <%= serviceName %> {
 
   constructor(private http: Http, private router: Router) {  }
 
-  create<%= modelUpperName %>(<%= modelName %>): Promise<any> {
-    return promiseResult(this.http.post(this.baseUrl, <%= modelName %>, {headers: getHeaders()}), this );
+  create<%= modelUpperName %>(<%= model %>): Promise<any> {
+    return promiseResult(this.http.post(this.baseUrl, <%= model %>, {headers: getHeaders()}), this );
   }
 
-  update<%= modelUpperName %>(<%= modelName %>): Promise<any> {
-    const url = this.baseUrl + '/' + <%= modelName %>.id;
+  update<%= modelUpperName %>(<%= model %>): Promise<any> {
+    const url = this.baseUrl + '/' + <%= model %>.id;
 
-    return promiseResult(this.http.put(url, <%= modelName %>, {headers: getHeaders()}), this);
+    return promiseResult(this.http.put(url, <%= model %>, {headers: getHeaders()}), this);
   }
 
   delete<%= modelUpperName %>(id): Promise<any> {
