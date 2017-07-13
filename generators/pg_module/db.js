@@ -7,6 +7,7 @@ const sqlTypesMap = {
   'number': 'bigint',
   'boolean': 'boolean',
   'datetime': 'timestamptz',
+  'date': 'timestamptz',
   'decimal': 'decimal'
 };
 

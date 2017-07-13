@@ -3,8 +3,8 @@ const promiseMethods = require('./promiseMethods');
 
 global.Promise = Promise;
 
-stopSignal = 'done!'
-types = ['number', 'string', 'boolean', 'datetime', 'decimal'];
+stopSignal = 'done!';
+types = ['number', 'string', 'boolean', 'datetime', 'date', 'decimal'];
 
 fieldPrompts = [{
     type: 'input',
