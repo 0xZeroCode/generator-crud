@@ -8,7 +8,7 @@
     %><datetime [(ngModel)]="currentSearchParams.<%=mainSearchFields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
   } else if (mainSearchFields[i].type === 'datetime') {
     %><datetime [(ngModel)]="currentSearchParams.<%=mainSearchFields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
-  } else {%><input type="text" [(ngModel)]="currentSearchParams.<%=mainSearchFields[i].name%>"><% } %>
+  } else {%><input type="text" class="form-control" [(ngModel)]="currentSearchParams.<%=mainSearchFields[i].name%>"><% } %>
   </div>
   <% } %><%
   if(mainSearchFields.length === 0) {
@@ -22,7 +22,7 @@
     %><datetime [(ngModel)]="currentSearchParams.<%=searchableFields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
   } else if (searchableFields[i].type === 'datetime') {
     %><datetime [(ngModel)]="currentSearchParams.<%=searchableFields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
-  } else {%><input type="text" [(ngModel)]="currentSearchParams.<%=searchableFields[i].name%>"><% } %>
+  } else {%><input type="text" class="form-control" [(ngModel)]="currentSearchParams.<%=searchableFields[i].name%>"><% } %>
   </div>
   <% } %><% } %>
   <button class="btn btn-primary round-button" (click)="search()">
@@ -62,7 +62,7 @@
             %><datetime [(ngModel)]="<%= model %>ToAdd.<%=fields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
             } else if (fields[i].type === 'datetime') {
             %><datetime [(ngModel)]="<%= model %>ToAdd.<%=fields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
-            } else {%><input type="text" [(ngModel)]="<%= model %>ToAdd.<%=fields[i].name%>"><% } %>
+          } else {%><input type="text" class="form-control" [(ngModel)]="<%= model %>ToAdd.<%=fields[i].name%>"><% } %>
           </div>
           <% } %>
         </div>
@@ -96,7 +96,7 @@
           %><datetime [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
           } else if (fields[i].type === 'datetime') {
           %><datetime [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
-          } else {%><input type="text" [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>"><% } %>
+        } else {%><input type="text" class="form-control" [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>"><% } %>
         </div>
         <% } %>
       </div>

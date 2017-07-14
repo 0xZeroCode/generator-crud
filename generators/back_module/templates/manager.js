@@ -1,6 +1,7 @@
 const repository = require('../infrastructure/<%= repositoryName %>');
 const utils = require('../utils');
 const Promise = require('bluebird');
+const _ = require('lodash');
 
 function create<%= modelName %>(<%= modelLowerName %>Object) {
   <%= modelLowerName %>Object.createDate = new Date();
