@@ -235,6 +235,10 @@
   margin-left: 50px;
 }
 
+.link {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+}
+
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
