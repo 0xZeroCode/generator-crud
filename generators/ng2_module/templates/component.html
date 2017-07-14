@@ -79,7 +79,7 @@
 </div>
 
 <div class="modal fade" bsModal #<%= model %>EditModal="bs-modal" [config]="{backdrop: 'static'}"
-    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" *ngIf="modalInfo.<%= model %>">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,10 +93,10 @@
         <div class="form-group">
           <label><%=fields[i].name%></label>
           <% if (fields[i].type === 'date') {
-          %><datetime [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
+          %><datetime [(ngModel)]="modalInfo.<%= model %>.<%=fields[i].name%>" [timepicker]="false" [datepicker]="datepickerOptions"></datetime><%
           } else if (fields[i].type === 'datetime') {
-          %><datetime [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
-        } else {%><input type="text" class="form-control" [(ngModel)]="this.modalInfo.<%= model %>.<%=fields[i].name%>"><% } %>
+          %><datetime [(ngModel)]="modalInfo.<%= model %>.<%=fields[i].name%>" [datepicker]="datepickerOptions"></datetime><%
+        } else {%><input type="text" class="form-control" [(ngModel)]="modalInfo.<%= model %>.<%=fields[i].name%>"><% } %>
         </div>
         <% } %>
       </div>

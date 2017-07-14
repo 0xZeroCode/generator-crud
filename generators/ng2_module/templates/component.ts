@@ -20,6 +20,12 @@ export class <%= componentName %> implements OnInit {
   searchParams: any = {};
   currentSearchParams: any = {};
 
+  datepickerOptions = {
+    weekStart: 1,
+    format: 'yyyy-mm-dd',
+    autoclose: true
+  };
+
   <%= model %>ToAdd: any = {};
 
   modalInfo: any = {};
