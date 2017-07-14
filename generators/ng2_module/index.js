@@ -4,6 +4,7 @@ const gulpIf = require('gulp-if');
 const utils = require('../utils');
 const _ = require('lodash');
 const filesBuilder = require('./filesBuilder');
+const filesEditor = require('./filesEditor');
 
 class AngularTwoModuleGenerator extends Base {
   constructor(args, options) {
@@ -30,6 +31,10 @@ class AngularTwoModuleGenerator extends Base {
 
   writing() {
     filesBuilder.buildFiles(this);
+
+    filesEditor.editAppModule(this);
+
+    filesEditor.editAppComponentHtml(this);
   }
 
   install() {
