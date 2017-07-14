@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 
+import { AlertModule, ButtonsModule, PaginationModule, ModalModule, TypeaheadModule, TabsModule, ProgressbarModule } from 'ngx-bootstrap';
+
 import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
 
 import { <%= componentName %> } from './<%= componentFileName %>.component';
@@ -25,6 +27,13 @@ export const <%= modelInPlural %>Routing = RouterModule.forChild(<%= modelInPlur
     FormsModule,
     HttpModule,
     CommonModule,
+    AlertModule,
+    ButtonsModule,
+    PaginationModule,
+    ModalModule,
+    TypeaheadModule,
+    TabsModule,
+    ProgressbarModule,
     NKDatetimeModule
   ],
   declarations: [
