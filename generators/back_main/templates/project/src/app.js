@@ -3,8 +3,6 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var config = require('config');
-var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
 
 var app = express();
 
