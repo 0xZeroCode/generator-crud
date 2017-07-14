@@ -9,7 +9,7 @@ import { <%= serviceName %> } from './<%= serviceFileName %>.service';
 export class <%= componentName %> implements OnInit {
   @ViewChild('<%= model %>EditModal') editModal;
 
-  <%=modelInPlural%> : any[] = [];
+  <%=modelInPlural%>: any[] = [];
 
   readonly firstPage = 1;
   currentPage = 1;
@@ -20,13 +20,13 @@ export class <%= componentName %> implements OnInit {
   searchParams: any = {};
   currentSearchParams: any = {};
 
-  <%= model %>ToAdd : any = {};
+  <%= model %>ToAdd: any = {};
 
   modalInfo: any = {};
 
   setSearchResult = result => {
     this.totalCount = result.count;
-    this.<%modelInPlural%> = result.result;
+    this.<%=modelInPlural%> = result.result;
   }
 
   constructor(private service: <%= serviceName %>) {  }

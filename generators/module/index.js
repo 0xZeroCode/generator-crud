@@ -20,7 +20,6 @@ class CrudModuleGenerator extends Base {
     return fieldsPrompt.prompt(this)
       .then(function (fields) {
         this.fields = fields;
-        console.log(this.fields);
 
         let params = Object.assign({fields: this.fields}, this.options);
 
