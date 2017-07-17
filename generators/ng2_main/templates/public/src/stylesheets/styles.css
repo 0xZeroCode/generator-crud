@@ -9,7 +9,7 @@
   flex-direction: row;
 }
 
-.roundButton {
+.round-button {
   border-radius: 50%;
   width: 55px;
   height: 55px;
